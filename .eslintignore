@@ -1,0 +1,5 @@
+# stop eslint from formatting the Godot foles
+/public
+
+# production files
+/build

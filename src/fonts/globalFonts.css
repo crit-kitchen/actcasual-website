@@ -1,0 +1,24 @@
+@font-face {
+  font-family: "c&c";
+  src: local("c&c"), url(./c&c.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "gameplay";
+  src: local("gameplay"), url(./gameplay.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "popwarner";
+  src: local("popwarner"), url(./popwarner.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "pixel";
+  src: local("pixel"), url(./newPixel.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "mops";
+  src: local("mops"), url(./mops.ttf) format("truetype");
+}
