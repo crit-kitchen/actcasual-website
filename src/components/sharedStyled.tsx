@@ -77,6 +77,12 @@ export const StyledFlexRow = styled.div`
   justify-content: space-between;
 `
 
+export const StyledFlexColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
 export const StyledImage = styled(StyledPixelatedDiv)<{
   width: number
   height: number

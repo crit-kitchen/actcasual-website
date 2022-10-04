@@ -1,9 +1,9 @@
 
 import { useGodotContext } from "../src/contexts/GodotProvider"
 import _ from "lodash/fp"
-import { CritMenu } from "./pages/CritMenu"
 import { useEffect } from "react"
 import { useLocalStorageContext } from "./contexts/LocalStorageProvider"
+import { MainPage } from "./pages/MainPage"
 
 const App = () => {
   const [{ /*isVisible,*/ GODOT_ACTIONS }, dispatchGodot] = useGodotContext()
@@ -31,7 +31,7 @@ const App = () => {
   return (
     <>
       
-      <CritMenu />
+      <MainPage />
 
     </>
   )

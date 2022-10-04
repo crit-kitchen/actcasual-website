@@ -1,8 +1,7 @@
 # ReactFrontend
 
-The react frontend used for SuperCTF which has UI outside of the godot game itself
+The react frontend used for the Act Casual pitch
 
 To Run:
 
-1. Input the backend url in the .env (normall `http://localhost:42401`)
-2. in console `npm run dev`
+1. in console `npm run dev`
