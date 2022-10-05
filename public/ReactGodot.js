@@ -493,6 +493,14 @@ const InternalConfig = function (initConfig) { // eslint-disable-line no-unused-
 		locale = locale.replace('-', '_');
 		const onExit = this.onExit;
 
+		/*carshalljd was here
+		var handler = function(event) {
+			this.canvas.style.pointerEvents = "none";
+			console.log("w")
+		};
+		this.canvas.addEventListener("wheel", handler, { passive: false });
+		*/
+
 		// Godot configuration.
 		return {
 			'canvas': this.canvas,

@@ -11,6 +11,8 @@
     <div id="root"></div>
     <script type="text/javascript">
       var handler = function(event) {
+        document.getElementById("canvas").style.pointerEvents = "none";
+        console.log("w")
       };
       document.getElementById("canvas").addEventListener("wheel", handler, { passive: false });
     </script>
