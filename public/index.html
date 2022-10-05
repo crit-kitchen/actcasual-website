@@ -9,7 +9,11 @@
   </head>
   <body style="background-color: #FEFCFE">
     <div id="root"></div>
-    
+    <script type="text/javascript">
+      var handler = function(event) {
+      };
+      document.getElementById("canvas").addEventListener("wheel", handler, { passive: false });
+    </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script type="module" src="dist/index.js"></script>
     <!--

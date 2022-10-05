@@ -253,7 +253,7 @@ const InternalConfig = function (initConfig) { // eslint-disable-line no-unused-
 		 * @type {boolean}
 		 * @default
 		 */
-		focusCanvas: true,
+		focusCanvas: false,
 		/**
 		 * When enabled, this will turn on experimental virtual keyboard support on mobile.
 		 *
@@ -411,7 +411,7 @@ const InternalConfig = function (initConfig) { // eslint-disable-line no-unused-
 		this.persistentPaths = parse('persistentPaths', this.persistentPaths);
 		this.persistentDrops = parse('persistentDrops', this.persistentDrops);
 		this.experimentalVK = parse('experimentalVK', this.experimentalVK);
-		this.focusCanvas = parse('focusCanvas', this.focusCanvas);
+		this.focusCanvas = false//parse('focusCanvas', this.focusCanvas);
 		this.serviceWorker = parse('serviceWorker', this.serviceWorker);
 		this.gdnativeLibs = parse('gdnativeLibs', this.gdnativeLibs);
 		this.fileSizes = parse('fileSizes', this.fileSizes);
