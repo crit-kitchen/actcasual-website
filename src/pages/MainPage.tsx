@@ -95,7 +95,7 @@ export const MainPage = () => {
         <li>The defining trait of this game is the social experience between friends during the moments of truce where players are discouraged from attacking and are instead pretending to act casual in whatever setting the minigame is taking place in. It is that period followed by the immediate chaos when the NPC looks away that creates an exciting social experience with strategy and anticipation. </li>
         </div>
 
-        <h2 style={h2Style}>Game Concept Demo</h2>
+        <h2 style={h2Style}>Game Graphics Concept Demo</h2>
         <div style={{width:"700px", height:"700px", display:"inline-block"}}>
           <ReactGodot script="ReactGodot.js" pck="ReactGodot.pck" exec="ReactGodot"/>
         </div>
