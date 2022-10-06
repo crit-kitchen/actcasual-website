@@ -44,6 +44,9 @@ export const MainPage = () => {
     <div style={containerStyle}>
       <StyledFlexColumn style={{justifyContent: "center", alignItems: "center", width: "100%"}}>
         <h1 style={titleStyle}>Act Casual</h1>
+        <h2>Gang Beasts meets Red Light/Green Light meets The WarioWare Map On Smash</h2>
+        <br></br>
+
         <StyledContentText>
           Act Casual is a 3D multiplayer party game focused on clean & 
           simple mechanics in goofy environments, with the 
@@ -57,6 +60,7 @@ export const MainPage = () => {
           (if you answer wrong you die). The gameplay is intended to create chaotic
           but comprehensible interactions that are both fun to play and watch on streams.
         </StyledContentText>
+
         
         <h2 style={h2Style}>Example match: The Classroom</h2>
         <StyledFlexRow style={{justifyContent: "center", alignItems: "center" }}>
@@ -81,9 +85,10 @@ export const MainPage = () => {
         <h2 style={h2Style}>Match Ideas</h2>
         <div style={smallerContainerStyle}>
         <li>Classroom: Players fight in a classroom using school supplies while avoiding being caught by the teacher.</li>
-        <li>Elevator: Players spawn in an elevator with a cop. They try to attack each other while the cop is not looking. The elevator lights occasionally go on and off and sometimes the doors open and NPCs get on and off.</li>
+        <li>Theater: You are actors on a stage play. When the curtains are up you must act out specific roles, when the curtains are down you fight amongst the props. Weapons depend on each player's role in the play.</li>
+        <li>Museum: You are visitors with a tour guide talking about exhibits. When their back is turned you fight using bones / ancient weapons & artifacts found on exhibit pieces.</li>
         <li>Conga Line: Players are hired entertainers at a restaurant. They are required to be doing a conga line together when the boss is watching which requires cooperation. Otherwise its a food fight.</li>
-        <li>Kitchen: Players are cooks in a kitchen that must man their stations while throwing knives, pans, etc. while the head chef patrols the kitchen. Get caught using a knife that fell on the floor and you might get fired.</li>
+        <li>Bands: A battle of the bands is taking place and all the players are in one band. When it's that band's turn to play they must perform, but when the spotlight moves off them they fight in the dark using instruments.</li>
         <li>Etc.</li>
         </div>
 
