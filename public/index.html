@@ -4,18 +4,11 @@
     <meta charset="utf-8" />
     <!-- TODO: Better Meta Tags for SEO -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Multiplayer io game with pipe network competition " />
+    <meta name="description" content="A multiplayer party game where you can only attack at certain times" />
     <title>Act Casual</title>
   </head>
   <body style="background-color: #FEFCFE">
     <div id="root"></div>
-    <script type="text/javascript">
-      var handler = function(event) {
-        document.getElementById("canvas").style.pointerEvents = "none";
-        console.log("w")
-      };
-      document.getElementById("canvas").addEventListener("wheel", handler, { passive: false });
-    </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script type="module" src="dist/index.js"></script>
     <!--

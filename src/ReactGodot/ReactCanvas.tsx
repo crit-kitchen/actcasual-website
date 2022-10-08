@@ -25,7 +25,7 @@ const ReactCanvas: FunctionComponent<ReactEngineProps> = ({ engine, pck, exec, w
 
   useEffect(() => {
     if (engine.isWebGLAvailable()) {
-      changeLoadingState({ mode: "indeterminate" })
+      changeLoadingState({ mode: "hidden" })
       const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":exec,"experimentalVK":false,"focusCanvas":true,"gdnativeLibs":[]};
       setInstance(new engine(GODOT_CONFIG))
     } else {
@@ -38,9 +38,9 @@ const ReactCanvas: FunctionComponent<ReactEngineProps> = ({ engine, pck, exec, w
       instance
         .startGame({mainPack: pck, 'onProgress': ((current: number, total: number) => {
           if (total > 0) {
-            changeLoadingState({ mode: "progress", percent: current / total })
+            changeLoadingState({ mode: "hidden", percent: current / total })
           } else {
-            changeLoadingState({ mode: "indeterminate" })
+            changeLoadingState({ mode: "hidden" })
           }
         })})
         .then(() => {
