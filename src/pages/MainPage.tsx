@@ -39,13 +39,33 @@ const imageStyle = {
   maxWidth: 'calc(50vw)',
 }
 
-const profilesContainer: React.CSSProperties = {
-  display: "grid",
-  gridTemplateColumns: "1fr 1fr",
-  columnGap: "50px",
-  rowGap: "10px",
-  //textAlign: "center"
-}
+const ProfilesContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 50px;
+  row-gap: 10px;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+  
+
+`
+const GodotContainer = styled.div`
+  width: 700px;
+  height: 700px;
+  display: inline-block;
+  margin-bottom: -100px;
+
+  @media (max-width: 800px) {
+    width: 400px;
+    height: 400px;
+
+  }
+  
+
+`
+
 const profileStyle: React.CSSProperties = {
   //border: "1px solid red"
 }
@@ -127,13 +147,13 @@ export const MainPage = () => {
 
         <h2 style={h2Style}>Game Graphics Concept Demo</h2>
         <h4 style={{marginTop: "-30px"}}>*These graphics are just for conceptualization*</h4>
-        <div style={{width:"700px", height:"700px", display:"inline-block", marginBottom:"-100px"}}>
+        <GodotContainer>
           <ReactGodot script="ReactGodot.js" pck="ReactGodot.pck" exec="ReactGodot"/>
-        </div>
+        </GodotContainer>
 
 
         <h2 style={h2Style}>The Team</h2>
-        <div style={profilesContainer}>
+        <ProfilesContainer>
           <div style={profileStyle}>
             <div style={profileNameStyle}>
               Marshall
@@ -215,7 +235,7 @@ export const MainPage = () => {
               -  Rhythm game/ Shuffle addict<br />
             </div>
           </div>
-        </div>
+        </ProfilesContainer>
 
       </StyledFlexColumn>
     </div>
