@@ -39,6 +39,31 @@ const imageStyle = {
   maxWidth: 'calc(50vw)',
 }
 
+const profilesContainer: React.CSSProperties = {
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr",
+  columnGap: "50px",
+  rowGap: "10px",
+  //textAlign: "center"
+}
+const profileStyle: React.CSSProperties = {
+  //border: "1px solid red"
+}
+const profileNameStyle: React.CSSProperties = {
+  fontSize: "40px",
+  fontWeight: 900
+  
+}
+const profilePositionStyle: React.CSSProperties = {
+  fontSize: "20px",
+  fontWeight: 900
+  
+}
+const profileBodyStyle: React.CSSProperties = {
+  fontSize: "18px"
+  
+}
+
 export const MainPage = () => {
   return (
     <div style={containerStyle}>
@@ -101,10 +126,99 @@ export const MainPage = () => {
         </div>
 
         <h2 style={h2Style}>Game Graphics Concept Demo</h2>
-        <div style={{width:"700px", height:"700px", display:"inline-block"}}>
+        <h4 style={{marginTop: "-30px"}}>*These graphics are just for conceptualization*</h4>
+        <div style={{width:"700px", height:"700px", display:"inline-block", marginBottom:"-100px"}}>
           <ReactGodot script="ReactGodot.js" pck="ReactGodot.pck" exec="ReactGodot"/>
         </div>
+
+
+        <h2 style={h2Style}>The Team</h2>
+        <div style={profilesContainer}>
+          <div style={profileStyle}>
+            <div style={profileNameStyle}>
+              Marshall
+            </div>
+            <div style={profilePositionStyle}>
+              Full Stack developer
+            </div>
+            <div style={profileBodyStyle}>
+              - Arts Technology and the Business of Innovation (USC) <br />
+              - Been making games since I started playing them <br />
+              - Big Tetris99 winner type guy lots of wins no T spins big kill counts <br />
+              - Favorite game: Starfox64
+            </div>
+          </div>
+          <div style={profileStyle}>
+            <div style={profileNameStyle}>
+            Alex
+            </div>
+            <div style={profilePositionStyle}>
+            Musician and audio engineer
+            </div>
+            <div style={profileBodyStyle}>
+              - Arts Technology and the Business of Innovation (USC)<br />
+              - 8+ years Video Production experience <br />
+              - Favorite game: Burnout Paradise <br />
+            </div>
+          </div>
+          <div style={profileStyle}>
+            <div style={profileNameStyle}>
+            Mars
+            </div>
+            <div style={profilePositionStyle}>
+            Multimedia designer and developer
+            </div>
+            <div style={profileBodyStyle}>
+              -  Master of Science in Software Management (CMU) <br />
+              -  Serial entrepreneurial experience<br />
+              -  Favorite game: The Binding of Isaac <br />
+            </div>
+          </div>
+          <div style={profileStyle}>
+            <div style={profileNameStyle}>
+            Phillip
+            </div>
+            <div style={profilePositionStyle}>
+            Backend Engineer
+            </div>
+            <div style={profileBodyStyle}>
+              - Current Google engineer<br />
+              - Makes Marshall conform to industry standards<br />
+              - Joined the team by taking the top 5 ranked spots in SuperCTF (Our first game)<br />
+              - Favorite Game: Runescape
+            </div>
+          </div>
+
+          <div style={profileStyle}>
+            <div style={profileNameStyle}>
+            Liz
+            </div>
+            <div style={profilePositionStyle}>
+            Game Programmer
+            </div>
+            <div style={profileBodyStyle}>
+              -  Computer Science (KCL, London)<br />
+              -  Experience in many indie game projects<br />
+              -  Can beat Marshall in Asteroids and Street Fighter (allegedly)<br />
+            </div>
+          </div>
+          <div style={profileStyle}>
+            <div style={profileNameStyle}>
+            Theo
+            </div>
+            <div style={profilePositionStyle}>
+            Production & Community Manager
+            </div>
+            <div style={profileBodyStyle}>
+              -  Math Computer Science Major (UCSD)<br />
+              -  Starcraft modding enthusiast<br />
+              -  Rhythm game/ Shuffle addict<br />
+            </div>
+          </div>
+        </div>
+
       </StyledFlexColumn>
     </div>
   )
 }
+
