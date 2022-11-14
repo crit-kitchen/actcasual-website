@@ -28,3 +28,5 @@
   font-family: "concertOne";
   src: local("concertOne"), url(./concertOne.ttf) format("truetype");
 }
+/* WARNING For some fucking reason i cant get these to load to the relative path of the project,
+so they must go at critkitchen.com/dist/fonts regardless of what project this is*/
