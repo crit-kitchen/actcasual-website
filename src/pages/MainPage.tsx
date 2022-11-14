@@ -264,13 +264,13 @@ const StyledContentText = styled.div`
   
   
 `
-const containerStyle = {
-  padding: '48px 24px',
-  margin: '0 auto',
-  background: 'url(Assets/background.jpg) center center fixed',
-  backgroundSize: "450px 450px",
-  overflowX: "hidden"
-}
+const StyledContainer = styled.div`
+  padding: 48px 24px;
+  margin: 0 auto;
+  background: url(Assets/background.jpg) center center fixed;
+  background-size: 450px 450px;
+  overflow-x: hidden;
+`
 
 const StyledTitle = styled.h1`
   margin: 24px 0;
@@ -292,29 +292,21 @@ const StyledTitle = styled.h1`
   }
 
 `
+const StyledH2 = styled.div`
+  font-size: 25px;
+  text-align: center;
+  background-color: #f5c474;
+  color: white;
+  border-radius: 50px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  @media (max-width: 510px) {
+    font-size: 20px;
+  }
 
-const h2Style = {
-  fontSize: '25px',
-  textAlign: 'center',
-  backgroundColor: '#f5c474',
-  color: 'white',
-  borderRadius: '50px',
-  paddingLeft: '20px',
-  paddingRight: '20px',
-  paddingBottom: '5px',
-}
+`
 
-const smallerContainerStyle = {
-  maxWidth: '740px',
-  margin: '0 auto',
-  fontSize: '20px',
-}
-
-
-const imageStyle = {
-  maxWidth: '50%',
-  maxHeight: '50%',
-}
 
 const StyledImage = styled.img`
   max-width: 50%;
@@ -327,7 +319,7 @@ const StyledImage = styled.img`
 
 export const MainPage = () => {
   return (
-    <div style={containerStyle}>
+    <StyledContainer>
       <StyledContentColumn>
         <StyledTitle>ACT CASUAL</StyledTitle>
 
@@ -342,7 +334,7 @@ export const MainPage = () => {
 
         
         <StyledRowPadding size={"25px"} />
-        <h2 style={h2Style}>Stage Example Mockup: Classroom</h2>
+        <StyledH2>Stage Example Mockup: Classroom</StyledH2>
         
         <StyledRowPadding size={"15px"} />
         
@@ -534,7 +526,7 @@ export const MainPage = () => {
         <span style={{fontSize:"12px", color:"darkslategrey", width:"80%", textAlign: "center"}}>Thanks to https://mariodelvalle.github.io/CaptainIconWeb/ for the stage icons</span>
 
       </StyledContentColumn>
-    </div>
+    </StyledContainer>
   )
 }
 
