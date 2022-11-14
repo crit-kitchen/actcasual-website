@@ -7,26 +7,301 @@ import {
   StyledPageContainer, StyledRowPadding,
 } from "../components/sharedStyled"
 
+const StyledContentColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  max-width: 800px;
+  background-color: RGB(254, 252, 254);//#e6f3ff;//#eaeaea;
+  border-radius: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  
+`
 
+const StyledBubbleRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 800px) {
+    flex-direction: column;
+    max-width: 400px;
+    height: 400px;
+  }
+
+`
+
+
+const StyledTextBubble = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-grow: 1;
+  height: 100%;
+  width: 100%;
+`
+const StyledBubbleRed = styled.div`
+  position: absolute;
+  width: 375px;
+  height: 210px;
+  margin-left: 20px;
+  margin-top: 20px;
+  z-index: 0;
+  background-color: #ea8d8a;
+  
+  transform: rotate(10deg);
+  -moz-border-radius: 188px / 105px;
+  -webkit-border-radius: 188px / 105px;
+  border-radius: 188px / 105px;
+
+`
+
+const StyledBubbleBlue = styled.div`
+  position: absolute;
+  width: 400px;
+  height: 170px;
+  z-index: 0;
+  background-color: #96c5f4;
+  margin-top: 20px;
+  
+  transform: rotate(3deg);
+  -moz-border-radius: 200px / 105px;
+  -webkit-border-radius: 200px / 105px;
+  border-radius: 200px / 90px;
+
+`
+const StyledBubblePurple = styled.div`
+  position: absolute;
+  width: 450px;
+  height: 170px;
+  z-index: 0;
+  background-color: #e98dd4;
+  
+  transform: rotate(-2deg);
+  -moz-border-radius: 200px / 105px;
+  -webkit-border-radius: 200px / 105px;
+  border-radius: 225px / 90px;
+
+`
+
+const StyledBubbleTextRed = styled.div`
+  font-size: 20px;
+  text-align: center;
+  z-index: 1;
+  line-height: 1;
+  color: white;
+  padding-left: 58px;
+  @media (max-width: 800px) {
+    padding-left: 0;
+    font-size: 15px;
+    width: 90%;
+  }
+`
+
+const StyledBubbleTitleRed = styled.p`
+  font-size: 35px;
+  z-index: 1;
+  @media (max-width: 800px) {
+    font-size: 30px;
+    text-align: center;
+  }
+`
+const StyledBubbleTitlePurple = styled.p`
+  font-size: 35px;
+  z-index: 1;
+  margin-top: -120px;
+  position: absolute;
+  white-space: pre;
+  @media (max-width: 800px) {
+    font-size: 30px;
+    text-align: center;
+  }
+  @media (max-width: 450px) {
+    font-size: 20px;
+    text-align: center;
+  }
+`
+const StyledBubbleTitleBlue = styled.p`
+  font-size: 35px;
+  z-index: 1;
+  @media (max-width: 800px) {
+    font-size: 30px;
+    text-align: center;
+  }
+  @media (max-width: 450px) {
+    font-size: 20px;
+    text-align: center;
+  }
+`
+
+const StyledBubbleTextPurple = styled.div`
+  font-size: 20px;
+  text-align: center;
+  z-index: 1;
+  line-height: 1;
+  @media (max-width: 800px) {
+    padding-left: 0;
+    font-size: 15px;
+    width: 90%;
+  }
+`
+const StyledBubbleTextBlue = styled.div`
+  font-size: 20px;
+  text-align: center;
+  z-index: 1;
+  line-height: 1;
+  @media (max-width: 800px) {
+    font-size: 15px;
+    width: 90%;
+  }
+`
+
+const StyledStageFlexRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
+`
+const StyledStage = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: 800px) {
+    margin-top: 20px;
+  }
+`
+
+const StyledStageIcon = styled.div`
+  background: url(Assets/StageIcons/Conga.png);
+  background-repeat: no-repeat;
+  background-size: 100px 100px;
+  width: 100px;
+  height: 100px;
+`
+const StyledStageTitle = styled.div`
+  color: black;
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+`
+const StyledStageText = styled.div`
+  color: #606060;
+  font-size: 15px;
+  width: 80%;
+  text-align: center;
+`
+
+
+const StyledMemberFlexRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
+`
+const StyledMember = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  align-self:stretch;
+  @media (max-width: 800px) {
+    margin-top: 20px;
+  }
+`
+const StyledMemberIcon = styled.div`
+  background: url(Assets/StageIcons/Conga.png);
+  background-repeat: no-repeat;
+  background-size: 100px 100px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  border: 1px solid black;
+`
+const StyledMemberTitle = styled.div`
+  color: black;
+  font-size: 40px;
+  font-weight: 900;
+  width: 100%;
+  text-align: center;
+`
+const StyledMemberSubTitle = styled.div`
+  color: black;
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+  margin-top: -10px;
+`
+const StyledMemberText = styled.div`
+  color: #606060;
+  font-size: 14px;
+  width: 100%;
+  text-align: center;
+`
 const StyledContentText = styled.div`
   font-size: 20px;
+  text-align: center;
+  z-index: 1;
+  line-height: 1;
+  
   
 `
 const containerStyle = {
-  maxWidth: '1440px',
   padding: '48px 24px',
-  margin: '0 auto'
+  margin: '0 auto',
+  background: 'url(Assets/background.jpg) center center fixed',
+  backgroundSize: "450px 450px",
+  overflowX: "hidden"
 }
 
-const titleStyle = {
-  margin: '24px 0',
-  fontSize: '100px',
-  lineHeight: '1'
-}
+const StyledTitle = styled.h1`
+  margin: 24px 0;
+  text-align: center;
+  font-size: 80px;
+  line-height: 1;
+  text-shadow: 4px 4px #be6b29;
+  color: RGB(254,241, 118);
+  background-color: #f5c474;
+  border-radius: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 10px;
+  @media (max-width: 560px) {
+    font-size: 60px;
+  }
+  @media (max-width: 470px) {
+    font-size: 40px;
+  }
+
+`
 
 const h2Style = {
-  margin: '100px 0 24px',
-  fontSize: '40px',
+  fontSize: '25px',
+  textAlign: 'center',
+  backgroundColor: '#f5c474',
+  color: 'white',
+  borderRadius: '50px',
+  paddingLeft: '20px',
+  paddingRight: '20px',
+  paddingBottom: '5px',
 }
 
 const smallerContainerStyle = {
@@ -35,209 +310,230 @@ const smallerContainerStyle = {
   fontSize: '20px',
 }
 
+
 const imageStyle = {
-  maxWidth: 'calc(50vw)',
+  maxWidth: '50%',
+  maxHeight: '50%',
 }
 
-const ProfilesContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap: 50px;
-  row-gap: 10px;
-
+const StyledImage = styled.img`
+  max-width: 50%;
+  max-height: 50%;
   @media (max-width: 800px) {
-    grid-template-columns: 1fr;
+    max-width: 100%;
   }
-  
 
 `
-const GodotContainer = styled.div`
-  width: 700px;
-  height: 700px;
-  display: inline-block;
-  margin-bottom: -100px;
-
-  @media (max-width: 800px) {
-    width: 400px;
-    height: 400px;
-
-  }
-  
-
-`
-
-const profileStyle: React.CSSProperties = {
-  //border: "1px solid red"
-}
-const profileNameStyle: React.CSSProperties = {
-  fontSize: "40px",
-  fontWeight: 900
-  
-}
-const profilePositionStyle: React.CSSProperties = {
-  fontSize: "20px",
-  fontWeight: 900
-  
-}
-const profileBodyStyle: React.CSSProperties = {
-  fontSize: "18px"
-  
-}
 
 export const MainPage = () => {
   return (
     <div style={containerStyle}>
-      <StyledFlexColumn style={{justifyContent: "center", alignItems: "center", width: "100%"}}>
-        <h1 style={titleStyle}>Act Casual</h1>
-        <h2>Gang Beasts meets Red Light/Green Light meets The WarioWare Map On Smash</h2>
-        <br></br>
+      <StyledContentColumn>
+        <StyledTitle>ACT CASUAL</StyledTitle>
 
-        <StyledContentText>
-          Act Casual is a 3D multiplayer party game focused on clean & 
-          simple mechanics in goofy environments, with the 
+        <StyledContentText style={{maxWidth:"600px", color: "#606060"}}>
+          Act Casual is a <span style={{color: "black"}}>3D multiplayer party game</span> focused on <span style={{color: "black"}}>clean & 
+          simple mechanics</span> in goofy environments with the 
           gimmick that players can only attack each other while
-          they are not being watched by an NPC. For example, 
-          players are seated in a classroom with the objective to 
-          throw school supplies at each other (to the death). The catch 
-          is there’s an NPC teacher up front, and if she turns to catch you 
-          fooling around, she smacks you with a ruler and may even force you to 
-          answer a question about the lesson she was giving in the background 
-          (if you answer wrong you die). The gameplay is intended to create chaotic
-          but comprehensible interactions that are both fun to play and watch on streams.
+          they are <span style={{color: "black"}}>not being watched by an NPC</span>
         </StyledContentText>
 
+        <StyledRowPadding size={"20px"} />
+
         
-        <h2 style={h2Style}>Example match: The Classroom</h2>
-        <StyledFlexRow style={{justifyContent: "center", alignItems: "center" }}>
-          <StyledContentText>
-            Players spawn in a classroom and must kill eachother while the teacher is not paying attention to them.
-          </StyledContentText>
-          <img style={imageStyle} src="Assets/animation1.gif"/>
-        </StyledFlexRow>
-        <StyledFlexRow style={{justifyContent: "center", alignItems: "center" }}>
-          <img style={imageStyle} src="Assets/animation2.gif"/>
-          <StyledContentText>
-            Each game has its own unique set of obstacles and weapons, and in the classroom match, players use various school supplies that all function differently.
-          </StyledContentText>
-        </StyledFlexRow>
-        <StyledFlexRow  style={{justifyContent: "center", alignItems: "center" }}>
-          <StyledContentText>
-            Players must keep an eye out for the teacher though and act casual when necessary - if she catches you fooling around she'll smack you with a ruler!
-          </StyledContentText>
-          <img style={imageStyle} src="Assets/animation3.gif" />
-        </StyledFlexRow>
+        <StyledRowPadding size={"25px"} />
+        <h2 style={h2Style}>Stage Example Mockup: Classroom</h2>
+        
+        <StyledRowPadding size={"15px"} />
+        
+        <StyledBubbleRow>
+          <StyledTextBubble>
+            <StyledBubbleTitleRed>
+              3, 2, 1  FIGHT!!#!@!
+            </StyledBubbleTitleRed>
+            <StyledBubbleTextRed>
+              When the teacher's back is turned, hop out of your seats to fight other students in a brawl to the death!
+            </StyledBubbleTextRed>
+            <StyledBubbleRed />
+          </StyledTextBubble>
+          <StyledImage src="Assets/animation1.gif"/>
+        </StyledBubbleRow>
+        <StyledRowPadding size={"40px"} />
+        <StyledBubbleRow style={{justifyContent: "center", alignItems: "center"}}>
+          <StyledImage src="Assets/animation2.gif"/>
+          <StyledTextBubble>
+            <StyledBubblePurple />
+            <StyledBubbleTitlePurple>
+              Use stage-specific weapons
+            </StyledBubbleTitlePurple>
+            <StyledBubbleTextPurple style={{color: "white", marginTop: "20px"}}>
+              Launch paper airplanes across the room, beam kids in the back of the head with spitballs, and sharpen pencils for maximum stabbing potential
+            </StyledBubbleTextPurple>
+          </StyledTextBubble>
+        </StyledBubbleRow>
+        <StyledRowPadding size={"40px"} />
+        <StyledBubbleRow  style={{justifyContent: "center", alignItems: "center" }}>
+          <StyledTextBubble>
+            <StyledBubbleBlue />
+            <StyledBubbleTitleBlue>
+              But don't get caught!
+            </StyledBubbleTitleBlue>
+            <StyledBubbleTextBlue style={{color: "white"}}>
+              Whe the teacher turns around, you better be back in your seat and acting casual, lest you incur the teacher's wrath!
+            </StyledBubbleTextBlue>
+          </StyledTextBubble>
+          <StyledImage src="Assets/animation3.gif" />
+        </StyledBubbleRow>
 
-        <h2 style={h2Style}>Match Ideas</h2>
-        <div style={smallerContainerStyle}>
-        <li>Classroom: Players fight in a classroom using school supplies while avoiding being caught by the teacher.</li>
-        <li>Theater: You are actors on a stage play. When the curtains are up you must act out specific roles, when the curtains are down you fight amongst the props. Weapons depend on each player's role in the play.</li>
-        <li>Museum: You are visitors with a tour guide talking about exhibits. When their back is turned you fight using bones / ancient weapons & artifacts found on exhibit pieces.</li>
-        <li>Conga Line: Players are hired entertainers at a restaurant. They are required to be doing a conga line together when the boss is watching which requires cooperation. Otherwise its a food fight.</li>
-        <li>Bands: A battle of the bands is taking place and all the players are in one band. When it's that band's turn to play they must perform, but when the spotlight moves off them they fight in the dark using instruments.</li>
-        <li>Etc.</li>
-        </div>
+        <StyledRowPadding size={"30px"} />
 
-        <h2 style={h2Style}>Misc. Notes</h2>
+        <span style={{fontSize: "35px", textAlign: "center"}}>Dozens of Unique Stages</span>
+        
+        <StyledRowPadding size={"20px"} />
 
-        <div style={smallerContainerStyle}>
-        <li>This format also has a great opportunity to add in cheeky moments of added fun. For example, if a players is caught messing around in class too many times, the main action will pause and that player will have to get up in front of the class, the cameras will zoom in on them, and then suddenly it will switch to a game show type format where they have to answer questions about the lesson or die.</li>
-        <li>Having straight forward mechanics allows development to be focused on making the game clean and bug free. Rather than be an overstuffed turkey with too many unfinished, unpolished, wacky minigame ideas, this game will have a focus on tight mechanics, strong polish, and well balanced minigames that are made for replayability, fun, and hilarious contexts.</li>
-        <li>The defining trait of this game is the social experience between friends during the moments of truce where players are discouraged from attacking and are instead pretending to act casual in whatever setting the minigame is taking place in. It is that period followed by the immediate chaos when the NPC looks away that creates an exciting social experience with strategy and anticipation. </li>
-        </div>
+        <StyledStageFlexRow>
+          <StyledStage>
+            <StyledStageIcon style={{backgroundImage: "url(Assets/StageIcons/Museum.png"}}/>
+            <StyledStageTitle>Museum</StyledStageTitle>
+            <StyledStageText>Grab ancient swords, dinosaur bones, and priceless artifacts to battle as you leave your tour group behind</StyledStageText>
+          </StyledStage>
+          <StyledStage>
+            <StyledStageIcon style={{backgroundImage: "url(Assets/StageIcons/Kitchen.png"}}/>
+            <StyledStageTitle>Kitchen</StyledStageTitle>
+            <StyledStageText>Smash plates and throw knives at your fellow line cooks, but you better be cooking when the head chef comes around</StyledStageText>
+          </StyledStage>
+          <StyledStage>
+            <StyledStageIcon style={{backgroundImage: "url(Assets/StageIcons/Conga.png"}}/>
+            <StyledStageTitle>Conga Line</StyledStageTitle>
+            <StyledStageText>As tonight's entertainment, you must conga when the manager checks in, but it devolves to a food fight when he's gone</StyledStageText>
+          </StyledStage>
+        </StyledStageFlexRow>
 
-        <h2 style={h2Style}>Game Graphics Concept Demo</h2>
-        <h4 style={{marginTop: "-30px"}}>*These graphics are just for conceptualization*</h4>
+
+        <StyledRowPadding size={"20px"} />
+
+        <StyledStageFlexRow>
+          <StyledStage>
+            <StyledStageIcon style={{backgroundImage: "url(Assets/StageIcons/Theater.png"}}/>
+            <StyledStageTitle>Theater</StyledStageTitle>
+            <StyledStageText>Throw props and hurl costumes when the curtain is down, but be prepared to put on a show when the curtain rises</StyledStageText>
+          </StyledStage>
+          <StyledStage>
+            <StyledStageIcon style={{backgroundImage: "url(Assets/StageIcons/Stadium.png"}}/>
+            <StyledStageTitle>Stadium</StyledStageTitle>
+            <StyledStageText>As cheerleaders you have to celebrate when your team scores, but between plays it's a free-for-all of pom-poms and foam fingers</StyledStageText>
+          </StyledStage>
+          <StyledStage>
+            <StyledStageIcon style={{backgroundImage: "url(Assets/StageIcons/More.png"}}/>
+            <StyledStageTitle>And much more!</StyledStageTitle>
+            <StyledStageText>Construction Site, Battle of the Bands, TV News, Grocery Store, ...</StyledStageText>
+          </StyledStage>
+        </StyledStageFlexRow>
+        
+        <StyledRowPadding size={"50px"} />
+        
+        <span style={{fontSize: "35px", textAlign: "center"}}>Great Party Game Fun!</span>
+
+        <StyledRowPadding size={"25px"} />
+        <StyledContentText style={{width: "80%", color: "#606060"}}>
+          With tight and simple mechanics, <span style={{color: "black"}}>Act Casual</span> is made for replayability, hilarity, and fun.
+          Through our unique blend of <span style={{color: "black"}}>chaotic fighting</span> with unexpected<span style={{color: "black"}}> moments of truce</span>,
+          it creates an exciting social experience that balances <span style={{color: "black"}}>combat and cooperation </span>-
+           tense moments when everyone has to stop and act casual are juxtaposed with the immediate chaos following the NPC looking away and the fighting resuming.
+        </StyledContentText>
+        
+
+        <StyledRowPadding size={"50px"} />
+        <span style={{fontSize: "40px", textAlign: "center"}}>Game Concept Demo</span>
+  
+      {/*
         <GodotContainer>
           <ReactGodot script="ReactGodot.js" pck="ReactGodot.pck" exec="ReactGodot"/>
-        </GodotContainer>
+  </GodotContainer>*/}
 
+        <span style={{fontSize: "40px"}}>The Team</span>
+        <StyledRowPadding size={"20px"} />
+  
 
-        <h2 style={h2Style}>The Team</h2>
-        <ProfilesContainer>
-          <div style={profileStyle}>
-            <div style={profileNameStyle}>
-              Marshall
-            </div>
-            <div style={profilePositionStyle}>
-              Full Stack developer
-            </div>
-            <div style={profileBodyStyle}>
-              - Arts Technology and the Business of Innovation (USC) <br />
+        <StyledMemberFlexRow>
+          <StyledMember>
+            <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/marshall.jpg"}}/>
+            <StyledMemberTitle>Marshall</StyledMemberTitle>
+            <StyledMemberSubTitle>Full Stack Developer</StyledMemberSubTitle>
+            <StyledMemberText>- Arts Technology and the Business of Innovation (USC) <br />
               - Been making games since I started playing them <br />
               - Big Tetris99 winner type guy lots of wins no T spins big kill counts <br />
-              - Favorite game: Starfox64
-            </div>
-          </div>
-          <div style={profileStyle}>
-            <div style={profileNameStyle}>
-            Alex
-            </div>
-            <div style={profilePositionStyle}>
-            Musician and audio engineer
-            </div>
-            <div style={profileBodyStyle}>
-              - Arts Technology and the Business of Innovation (USC)<br />
+              - Favorite game: Starfox64</StyledMemberText>
+          </StyledMember>
+          <StyledMember>
+            <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/alex.jpg"}}/>
+            <StyledMemberTitle>Alex</StyledMemberTitle>
+            <StyledMemberSubTitle>Musician & Audio Engineer</StyledMemberSubTitle>
+            <StyledMemberText> - Arts Technology and the Business of Innovation (USC)<br />
               - 8+ years Video Production experience <br />
-              - Favorite game: Burnout Paradise <br />
-            </div>
-          </div>
-          <div style={profileStyle}>
-            <div style={profileNameStyle}>
-            Mars
-            </div>
-            <div style={profilePositionStyle}>
-            Multimedia designer and developer
-            </div>
-            <div style={profileBodyStyle}>
-              -  Master of Science in Software Management (CMU) <br />
+              - Favorite game: Burnout Paradise <br /></StyledMemberText>
+          </StyledMember>
+          <StyledMember>
+            <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/mars.jpg"}}/>
+            <StyledMemberTitle>Mars</StyledMemberTitle>
+            <StyledMemberSubTitle>Multimedia Designer & Developer</StyledMemberSubTitle>
+            <StyledMemberText> -  Master of Science in Software Management (CMU) <br />
               -  Serial entrepreneurial experience<br />
-              -  Favorite game: The Binding of Isaac <br />
-            </div>
-          </div>
-          <div style={profileStyle}>
-            <div style={profileNameStyle}>
-            Phillip
-            </div>
-            <div style={profilePositionStyle}>
-            Backend Engineer
-            </div>
-            <div style={profileBodyStyle}>
-              - Current Google engineer<br />
+              -  Favorite game: The Binding of Isaac <br /></StyledMemberText>
+          </StyledMember>
+        </StyledMemberFlexRow>
+
+        <StyledRowPadding size={"20px"} />
+
+        <StyledMemberFlexRow>
+          <StyledMember>
+            <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/pedm.jpg"}}/>
+            <StyledMemberTitle>Phillip</StyledMemberTitle>
+            <StyledMemberSubTitle>Backend Engineer</StyledMemberSubTitle>
+            <StyledMemberText>- Current Google engineer<br />
               - Makes Marshall conform to industry standards<br />
               - Joined the team by taking the top 5 ranked spots in SuperCTF (Our first game)<br />
-              - Favorite Game: Runescape
-            </div>
-          </div>
-
-          <div style={profileStyle}>
-            <div style={profileNameStyle}>
-            Liz
-            </div>
-            <div style={profilePositionStyle}>
-            Game Programmer
-            </div>
-            <div style={profileBodyStyle}>
+              - Favorite Game: Runescape</StyledMemberText>
+          </StyledMember>
+          <StyledMember>
+            <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/jamjar.jpg"}}/>
+            <StyledMemberTitle>Liz</StyledMemberTitle>
+            <StyledMemberSubTitle>Game Programmer</StyledMemberSubTitle>
+            <StyledMemberText>
               -  Computer Science (KCL, London)<br />
               -  Experience in many indie game projects<br />
               -  Can beat Marshall in Asteroids and Street Fighter (allegedly)<br />
-            </div>
-          </div>
-          <div style={profileStyle}>
-            <div style={profileNameStyle}>
-            Theo
-            </div>
-            <div style={profilePositionStyle}>
-            Production & Community Manager
-            </div>
-            <div style={profileBodyStyle}>
+            </StyledMemberText>
+          </StyledMember>
+          <StyledMember>
+            <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/teho.jpg"}}/>
+            <StyledMemberTitle>Theo</StyledMemberTitle>
+            <StyledMemberSubTitle>Production & Community Manager</StyledMemberSubTitle>
+            <StyledMemberText>
               -  Math Computer Science Major (UCSD)<br />
               -  Starcraft modding enthusiast<br />
-              -  Rhythm game/ Shuffle addict<br />
-            </div>
-          </div>
-        </ProfilesContainer>
+              -  Rhythm game/ Shuffle addict<br /></StyledMemberText>
+          </StyledMember>
+        </StyledMemberFlexRow>
 
-      </StyledFlexColumn>
+
+        <StyledRowPadding size={"20px"} />
+
+        <span style={{fontSize: "40px"}}>Contact</span>
+
+        <span style={{fontSize: "25px", textAlign:"center"}}>
+          Name: Marshall Demirjian<br />
+          Email: marshalljdem@gmail.com<br />
+          Discord: carshalljd#4808<br />
+          Website: critkitchen.com<br />
+        </span>
+
+        <StyledRowPadding size={"20px"} />
+
+
+        <span style={{fontSize:"12px", color:"darkslategrey", width:"80%", textAlign: "center"}}>Thanks to https://mariodelvalle.github.io/CaptainIconWeb/ for the stage icons</span>
+
+      </StyledContentColumn>
     </div>
   )
 }
