@@ -317,6 +317,20 @@ const StyledImage = styled.img`
 
 `
 
+
+const GodotContainer = styled.div`
+  width: 700px;
+  height: 700px;
+  display: inline-block;
+  margin-bottom: -100px;
+
+  @media (max-width: 800px) {
+    width: 400px;
+    height: 400px;
+
+  }
+`
+
 export const MainPage = () => {
   return (
     <StyledContainer>
@@ -438,10 +452,10 @@ export const MainPage = () => {
         <StyledRowPadding size={"50px"} />
         <span style={{fontSize: "40px", textAlign: "center"}}>Game Concept Demo</span>
   
-      {/*
+      
         <GodotContainer>
           <ReactGodot script="ReactGodot.js" pck="ReactGodot.pck" exec="ReactGodot"/>
-  </GodotContainer>*/}
+        </GodotContainer>
 
         <span style={{fontSize: "40px"}}>The Team</span>
         <StyledRowPadding size={"20px"} />
