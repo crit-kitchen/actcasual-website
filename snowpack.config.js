@@ -2,7 +2,7 @@
 module.exports = {
   mount: {
     public: { url: "/", static: true, resolve: false },
-    src: { url: "/" },
+    src: { url: "/dist" },
   },
   plugins: [
     "@snowpack/plugin-react-refresh",
@@ -41,7 +41,7 @@ module.exports = {
     port: 3000,
   },
   buildOptions: {
-    baseUrl: "./test",
+    baseUrl: "/actcasual",
     /* ... */
   },
 }
