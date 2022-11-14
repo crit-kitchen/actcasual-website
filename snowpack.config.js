@@ -1,8 +1,8 @@
 /** @type {import("snowpack").SnowpackUserConfig } */
 module.exports = {
   mount: {
-    public: { url: "/actcasual", static: true, resolve: false },
-    src: { url: "/dist" },
+    public: { url: "/", static: true, resolve: false },
+    src: { url: "/actcasual/dist" },
   },
   plugins: [
     "@snowpack/plugin-react-refresh",
