@@ -464,7 +464,7 @@ export const MainPage = () => {
         <StyledMemberFlexRow>
           <StyledMember>
             <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/marshall.jpg"}}/>
-            <StyledMemberTitle>Marshall</StyledMemberTitle>
+            <StyledMemberTitle>Rohin</StyledMemberTitle>
             <StyledMemberSubTitle>Full Stack Developer</StyledMemberSubTitle>
             <StyledMemberText>- Arts Technology and the Business of Innovation (USC) <br />
               - Been making games since I started playing them <br />
@@ -497,7 +497,7 @@ export const MainPage = () => {
             <StyledMemberTitle>Phillip</StyledMemberTitle>
             <StyledMemberSubTitle>Backend Engineer</StyledMemberSubTitle>
             <StyledMemberText>- Current Google engineer<br />
-              - Makes Marshall conform to industry standards<br />
+              - Makes Rohin conform to industry standards<br />
               - Joined the team by taking the top 5 ranked spots in SuperCTF (Our first game)<br />
               - Favorite Game: Runescape</StyledMemberText>
           </StyledMember>
@@ -508,7 +508,7 @@ export const MainPage = () => {
             <StyledMemberText>
               -  Computer Science (KCL, London)<br />
               -  Experience in many indie game projects<br />
-              -  Can beat Marshall in Asteroids and Street Fighter (allegedly)<br />
+              -  Can beat Rohin in Asteroids and Street Fighter (allegedly)<br />
             </StyledMemberText>
           </StyledMember>
           <StyledMember>
@@ -528,10 +528,9 @@ export const MainPage = () => {
         <span style={{fontSize: "40px"}}>Contact</span>
 
         <span style={{fontSize: "25px", textAlign:"center"}}>
-          Name: Marshall Demirjian<br />
-          Email: marshalljdem@gmail.com<br />
+          Name: Rohin Gulati<br />
+          Email: rohin@actcasual.net<br />
           Discord: carshalljd#4808<br />
-          Website: critkitchen.com<br />
         </span>
 
         <StyledRowPadding size={"20px"} />
