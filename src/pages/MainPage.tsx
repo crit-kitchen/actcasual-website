@@ -13,7 +13,7 @@ const StyledContentColumn = styled.div`
   justify-content: center;
   margin: auto;
   align-items: center;
-  max-width: 800px;
+  max-width: 900px;
   background-color: RGB(254, 252, 254);//#e6f3ff;//#eaeaea;
   border-radius: 100px;
   padding-left: 20px;
@@ -96,8 +96,9 @@ const StyledBubbleTextRed = styled.div`
   z-index: 1;
   line-height: 1;
   color: white;
-  padding-left: 58px;
-  @media (max-width: 800px) {
+  padding-left: 40px;
+  width: 90%;
+  @media (max-width: 900px) {
     padding-left: 0;
     font-size: 15px;
     width: 90%;
@@ -107,7 +108,7 @@ const StyledBubbleTextRed = styled.div`
 const StyledBubbleTitleRed = styled.p`
   font-size: 35px;
   z-index: 1;
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     font-size: 30px;
     text-align: center;
   }
@@ -118,7 +119,7 @@ const StyledBubbleTitlePurple = styled.p`
   margin-top: -120px;
   position: absolute;
   white-space: pre;
-  @media (max-width: 800px) {
+  @media (max-width: 900px) {
     font-size: 30px;
     text-align: center;
   }
@@ -145,6 +146,7 @@ const StyledBubbleTextPurple = styled.div`
   text-align: center;
   z-index: 1;
   line-height: 1;
+  width: 90%;
   @media (max-width: 800px) {
     padding-left: 0;
     font-size: 15px;
@@ -156,6 +158,7 @@ const StyledBubbleTextBlue = styled.div`
   text-align: center;
   z-index: 1;
   line-height: 1;
+  width: 90%;
   @media (max-width: 800px) {
     font-size: 15px;
     width: 90%;
@@ -331,6 +334,20 @@ const GodotContainer = styled.div`
   }
 `
 
+const StyledLink = styled.a`
+  color: #f5c474;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  &:hover {
+    color: #f5c474;
+    text-decoration: underline;
+  }
+  @media (max-width: 800px) {
+    font-size: 15px;
+  }
+`
+
 export const MainPage = () => {
   return (
     <StyledContainer>
@@ -450,12 +467,12 @@ export const MainPage = () => {
         
 
         <StyledRowPadding size={"50px"} />
-        <span style={{fontSize: "40px", textAlign: "center"}}>Game Concept Demo</span>
+        {/* <span style={{fontSize: "40px", textAlign: "center"}}>Game Concept Demo</span>
   
       
         <GodotContainer>
           <ReactGodot script="ReactGodot.js" pck="ReactGodot.pck" exec="ReactGodot"/>
-        </GodotContainer>
+        </GodotContainer> */}
 
         <span style={{fontSize: "40px"}}>The Team</span>
         <StyledRowPadding size={"20px"} />
@@ -464,12 +481,20 @@ export const MainPage = () => {
         <StyledMemberFlexRow>
           <StyledMember>
             <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/marshall.jpg"}}/>
-            <StyledMemberTitle>Rohin</StyledMemberTitle>
-            <StyledMemberSubTitle>Full Stack Developer</StyledMemberSubTitle>
+            <StyledMemberTitle>Marshall</StyledMemberTitle>
+            <StyledMemberSubTitle>Game Developer</StyledMemberSubTitle>
             <StyledMemberText>- Arts Technology and the Business of Innovation (USC) <br />
-              - Been making games since I started playing them <br />
-              - Big Tetris99 winner type guy lots of wins no T spins big kill counts <br />
+              - Been making games since started playing them<br />
+              {/* - Big Tetris99 winner type guy lots of wins no T spins big kill counts <br /> */}
               - Favorite game: Starfox64</StyledMemberText>
+          </StyledMember>
+          <StyledMember>
+            <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/mars.jpg"}}/>
+            <StyledMemberTitle>Mars</StyledMemberTitle>
+            <StyledMemberSubTitle>Game Developer</StyledMemberSubTitle>
+            <StyledMemberText>- Arts Technology and the Business of Innovation (USC) <br />
+              -  Serial entrepreneurial experience<br />
+              -  Favorite game: The Binding of Isaac <br /></StyledMemberText>
           </StyledMember>
           <StyledMember>
             <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/alex.jpg"}}/>
@@ -479,14 +504,6 @@ export const MainPage = () => {
               - 8+ years Video Production experience <br />
               - Favorite game: Burnout Paradise <br /></StyledMemberText>
           </StyledMember>
-          <StyledMember>
-            <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/mars.jpg"}}/>
-            <StyledMemberTitle>Mars</StyledMemberTitle>
-            <StyledMemberSubTitle>Multimedia Designer & Developer</StyledMemberSubTitle>
-            <StyledMemberText> -  Master of Science in Software Management (CMU) <br />
-              -  Serial entrepreneurial experience<br />
-              -  Favorite game: The Binding of Isaac <br /></StyledMemberText>
-          </StyledMember>
         </StyledMemberFlexRow>
 
         <StyledRowPadding size={"20px"} />
@@ -494,47 +511,42 @@ export const MainPage = () => {
         <StyledMemberFlexRow>
           <StyledMember>
             <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/pedm.jpg"}}/>
-            <StyledMemberTitle>Phillip</StyledMemberTitle>
-            <StyledMemberSubTitle>Backend Engineer</StyledMemberSubTitle>
-            <StyledMemberText>- Current Google engineer<br />
-              - Makes Rohin conform to industry standards<br />
-              - Joined the team by taking the top 5 ranked spots in SuperCTF (Our first game)<br />
-              - Favorite Game: Runescape</StyledMemberText>
+            <StyledMemberTitle>Irene</StyledMemberTitle>
+            <StyledMemberSubTitle>Game Designer</StyledMemberSubTitle>
+            <StyledMemberText>- Arts Technology and the Business of Innovation (USC) <br />
+              - ...<br />
+              - ...</StyledMemberText>
           </StyledMember>
           <StyledMember>
             <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/jamjar.jpg"}}/>
-            <StyledMemberTitle>Liz</StyledMemberTitle>
-            <StyledMemberSubTitle>Game Programmer</StyledMemberSubTitle>
+            <StyledMemberTitle>Victor</StyledMemberTitle>
+            <StyledMemberSubTitle>Concept Artist</StyledMemberSubTitle>
             <StyledMemberText>
-              -  Computer Science (KCL, London)<br />
-              -  Experience in many indie game projects<br />
-              -  Can beat Rohin in Asteroids and Street Fighter (allegedly)<br />
+              -  Art History (NYU)<br />
+              -  ...<br />
+              -  ...<br />
             </StyledMemberText>
           </StyledMember>
           <StyledMember>
             <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/teho.jpg"}}/>
-            <StyledMemberTitle>Theo</StyledMemberTitle>
-            <StyledMemberSubTitle>Production & Community Manager</StyledMemberSubTitle>
+            <StyledMemberTitle>Olivia</StyledMemberTitle>
+            <StyledMemberSubTitle>Level Designer</StyledMemberSubTitle>
             <StyledMemberText>
-              -  Math Computer Science Major (UCSD)<br />
-              -  Starcraft modding enthusiast<br />
-              -  Rhythm game/ Shuffle addict<br /></StyledMemberText>
+              -  Interactive Media & Games Division (USC)<br />
+              -  ...<br />
+              -  ...<br /></StyledMemberText>
           </StyledMember>
         </StyledMemberFlexRow>
 
-
         <StyledRowPadding size={"20px"} />
 
-        <span style={{fontSize: "40px"}}>Contact</span>
+        <span style={{fontSize: "40px"}}>Join our Discord</span>
 
         <span style={{fontSize: "25px", textAlign:"center"}}>
-          Name: Rohin Gulati<br />
-          Email: rohin@actcasual.net<br />
-          Discord: carshalljd#4808<br />
+        <StyledLink target="_blank" href="https://discord.gg/uw9RP68uSu">https://discord.gg/uw9RP68uSu</StyledLink>
         </span>
 
         <StyledRowPadding size={"20px"} />
-
 
         <span style={{fontSize:"12px", color:"darkslategrey", width:"80%", textAlign: "center"}}>Thanks to https://mariodelvalle.github.io/CaptainIconWeb/ for the stage icons</span>
 
