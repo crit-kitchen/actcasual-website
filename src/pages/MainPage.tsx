@@ -484,7 +484,7 @@ export const MainPage = () => {
             <StyledMemberTitle>Marshall</StyledMemberTitle>
             <StyledMemberSubTitle>Game Developer</StyledMemberSubTitle>
             <StyledMemberText>- Arts Technology and the Business of Innovation (USC) <br />
-              - Been making games since started playing them<br />
+              - Been making games since started playing<br />
               {/* - Big Tetris99 winner type guy lots of wins no T spins big kill counts <br /> */}
               - Favorite game: Starfox64</StyledMemberText>
           </StyledMember>
