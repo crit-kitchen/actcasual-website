@@ -7,6 +7,14 @@ import {
   StyledPageContainer, StyledRowPadding,
 } from "../components/sharedStyled"
 
+
+const StyledLogo = styled.img`
+
+height: 100px;
+margin: 40px 0;
+
+`
+
 const StyledContentColumn = styled.div`
   display: flex;
   flex-direction: column;
@@ -320,6 +328,18 @@ const StyledImage = styled.img`
 
 `
 
+const StyledVideo = styled.video`
+  max-width: 45%;
+  max-height: 50%;
+  @media (max-width: 800px) {
+    max-width: 100%;
+  }
+  border-radius: 15px;
+  border: 7px solid red;
+  overflow: hidden;
+
+`
+
 
 const GodotContainer = styled.div`
   width: 700px;
@@ -352,8 +372,8 @@ export const MainPage = () => {
   return (
     <StyledContainer>
       <StyledContentColumn>
-        <StyledTitle>ACT CASUAL</StyledTitle>
-
+        {/* <StyledTitle>ACT CASUAL</StyledTitle> */}
+        <StyledLogo src="Assets/logo.png" alt="act-casual-logo" />
         <StyledContentText style={{maxWidth:"600px", color: "#606060"}}>
           Act Casual is a <span style={{color: "black"}}>3D multiplayer party game</span> focused on <span style={{color: "black"}}>clean & 
           simple mechanics</span> in goofy environments with the 
@@ -458,12 +478,48 @@ export const MainPage = () => {
         <span style={{fontSize: "35px", textAlign: "center"}}>Great Party Game Fun!</span>
 
         <StyledRowPadding size={"25px"} />
-        <StyledContentText style={{width: "80%", color: "#606060"}}>
+        <StyledContentText style={{color: "#606060"}}>
           With tight and simple mechanics, <span style={{color: "black"}}>Act Casual</span> is made for replayability, hilarity, and fun.
-          Through our unique blend of <span style={{color: "black"}}>chaotic fighting</span> with unexpected<span style={{color: "black"}}> moments of truce</span>,
-          it creates an exciting social experience that balances <span style={{color: "black"}}>combat and cooperation </span>-
-           tense moments when everyone has to stop and act casual are juxtaposed with the immediate chaos following the NPC looking away and the fighting resuming.
         </StyledContentText>
+        <StyledRowPadding size={"40px"} />
+
+        <StyledBubbleRow>
+          <StyledTextBubble>
+            <StyledBubbleTitleRed>Chaotic Fighting</StyledBubbleTitleRed>
+            <StyledBubbleTextRed>
+            When everyone has to stop and act casual are juxtaposed with the immediate chaos following the NPC looking away and the fighting resuming.
+            </StyledBubbleTextRed>
+            <StyledBubbleRed />
+          </StyledTextBubble>
+          <StyledVideo style={{borderColor: '#ea8d8a'}} width="100%" height="100%" autoPlay loop src="Assets/1-chaotic.mp4"/>
+        </StyledBubbleRow>
+
+        <StyledRowPadding size={"40px"} />
+
+        <StyledBubbleRow style={{justifyContent: "center", alignItems: "center"}}>
+            <StyledVideo style={{borderColor: '#e98dd4'}} width="100%" height="100%" autoPlay loop src="Assets/2-combat.mp4"/>
+          <StyledTextBubble>
+            <StyledBubblePurple />
+            <StyledBubbleTitlePurple>Combat & Cooperation</StyledBubbleTitlePurple>
+            <StyledBubbleTextPurple style={{color: "white", marginTop: "20px"}}>
+            The goofy environment creates an exciting social experience that balances combat and cooperation.
+            </StyledBubbleTextPurple>
+          </StyledTextBubble>
+        </StyledBubbleRow>
+        
+        <StyledRowPadding size={"40px"} />
+
+        <StyledBubbleRow  style={{justifyContent: "center", alignItems: "center" }}>
+          <StyledTextBubble>
+            <StyledBubbleBlue />
+            <StyledBubbleTitleBlue>Tense Moments</StyledBubbleTitleBlue>
+            <StyledBubbleTextBlue style={{color: "white"}}>
+            Enjoy mini-games in-between fights where everyone else is chasing behind you.
+            </StyledBubbleTextBlue>
+          </StyledTextBubble>
+            <StyledVideo style={{borderColor: '#96c5f4'}} width="100%" height="100%" autoPlay loop src="Assets/3-tense.mp4"/>
+        </StyledBubbleRow>
+
         
 
         <StyledRowPadding size={"50px"} />
@@ -514,8 +570,8 @@ export const MainPage = () => {
             <StyledMemberTitle>Irene</StyledMemberTitle>
             <StyledMemberSubTitle>Game Designer</StyledMemberSubTitle>
             <StyledMemberText>- Arts Technology and the Business of Innovation (USC) <br />
-              - ...<br />
-              - ...</StyledMemberText>
+              - Software Engineer at Volvo<br />
+              - Favorite game: ToTK</StyledMemberText>
           </StyledMember>
           <StyledMember>
             <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/jamjar.jpg"}}/>
@@ -523,8 +579,6 @@ export const MainPage = () => {
             <StyledMemberSubTitle>Concept Artist</StyledMemberSubTitle>
             <StyledMemberText>
               -  Art History (NYU)<br />
-              -  ...<br />
-              -  ...<br />
             </StyledMemberText>
           </StyledMember>
           <StyledMember>
@@ -533,8 +587,8 @@ export const MainPage = () => {
             <StyledMemberSubTitle>Level Designer</StyledMemberSubTitle>
             <StyledMemberText>
               -  Interactive Media & Games Division (USC)<br />
-              -  ...<br />
-              -  ...<br /></StyledMemberText>
+              -  Developed award-winning experience <br />
+              -  Favorite game: What Remains of Edith Finch <br /></StyledMemberText>
           </StyledMember>
         </StyledMemberFlexRow>
 
@@ -554,4 +608,3 @@ export const MainPage = () => {
     </StyledContainer>
   )
 }
-
