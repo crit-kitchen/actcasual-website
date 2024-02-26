@@ -10,8 +10,9 @@ import {
 
 const StyledLogo = styled.img`
 
-height: 100px;
-margin: 40px 0;
+  max-width: 500px;
+  width: 100%;
+  margin: 40px 0;
 
 `
 
@@ -178,7 +179,7 @@ const StyledStageFlexRow = styled.div`
   flex-direction: row;
   width: 100%;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   @media (max-width: 800px) {
     flex-direction: column;
   }
@@ -453,7 +454,7 @@ export const MainPage = () => {
         </StyledStageFlexRow>
 
 
-        <StyledRowPadding size={"20px"} />
+        <StyledRowPadding size={"40px"} />
 
         <StyledStageFlexRow>
           <StyledStage>
@@ -566,7 +567,7 @@ export const MainPage = () => {
 
         <StyledMemberFlexRow>
           <StyledMember>
-            <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/pedm.jpg"}}/>
+            <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/irene.webp"}}/>
             <StyledMemberTitle>Irene</StyledMemberTitle>
             <StyledMemberSubTitle>Game Designer</StyledMemberSubTitle>
             <StyledMemberText>- Arts Technology and the Business of Innovation (USC) <br />
@@ -574,7 +575,7 @@ export const MainPage = () => {
               - Favorite game: ToTK</StyledMemberText>
           </StyledMember>
           <StyledMember>
-            <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/jamjar.jpg"}}/>
+            <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/victor.webp"}}/>
             <StyledMemberTitle>Victor</StyledMemberTitle>
             <StyledMemberSubTitle>Concept Artist</StyledMemberSubTitle>
             <StyledMemberText>
@@ -582,7 +583,7 @@ export const MainPage = () => {
             </StyledMemberText>
           </StyledMember>
           <StyledMember>
-            <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/teho.jpg"}}/>
+            <StyledMemberIcon style={{backgroundImage: "url(Assets/Profiles/olivia.webp"}}/>
             <StyledMemberTitle>Olivia</StyledMemberTitle>
             <StyledMemberSubTitle>Level Designer</StyledMemberSubTitle>
             <StyledMemberText>
