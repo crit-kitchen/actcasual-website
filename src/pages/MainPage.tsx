@@ -464,13 +464,13 @@ export const MainPage = () => {
             </StyledBubbleTextRed>
             <StyledBubbleRed />
           </StyledTextBubble>
-          <StyledVideo style={{borderColor: '#ea8d8a'}} width="100%" height="100%" autoPlay loop src="Assets/1-chaotic.mp4"/>
+          <StyledVideo style={{borderColor: '#ea8d8a'}} width="100%" height="100%" autoPlay loop muted src="Assets/1-chaotic.mp4"/>
         </StyledBubbleRow>
 
         <StyledRowPadding size={"40px"} />
 
         <StyledBubbleRow style={{justifyContent: "center", alignItems: "center"}}>
-            <StyledVideo style={{borderColor: '#e98dd4'}} width="100%" height="100%" autoPlay loop src="Assets/2-combat.mp4"/>
+            <StyledVideo style={{borderColor: '#e98dd4'}} width="100%" height="100%" autoPlay loop muted src="Assets/2-combat.mp4"/>
           <StyledTextBubble>
             <StyledBubblePurple />
             <StyledBubbleTitlePurple>Combat & Social</StyledBubbleTitlePurple>
@@ -490,7 +490,7 @@ export const MainPage = () => {
             Enjoy mini-games in-between fights where everyone else is chasing behind you.
             </StyledBubbleTextBlue>
           </StyledTextBubble>
-            <StyledVideo style={{borderColor: '#96c5f4'}} width="100%" height="100%" autoPlay loop src="Assets/3-tense.mp4"/>
+            <StyledVideo style={{borderColor: '#96c5f4'}} width="100%" height="100%" autoPlay loop muted src="Assets/3-tense.mp4"/>
         </StyledBubbleRow>
 
         
