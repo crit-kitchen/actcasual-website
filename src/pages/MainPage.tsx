@@ -1,15 +1,10 @@
 import styled from "styled-components"
-import ReactGodot from "../ReactGodot"
 
-import {
-  StyledFlexColumn,
-  StyledFlexRow,
-  StyledPageContainer, StyledRowPadding,
-} from "../components/sharedStyled"
+import { StyledRowPadding } from "../components/sharedStyled"
+import { DiscordButton } from '@/components/Buttons'
 
 
 const StyledLogo = styled.img`
-
   max-width: 500px;
   width: 100%;
   margin: 40px 0;
@@ -105,8 +100,8 @@ const StyledBubbleTextRed = styled.div`
   z-index: 1;
   line-height: 1;
   color: white;
-  padding-left: 40px;
-  width: 90%;
+  padding-left: 45px;
+  width: 80%;
   @media (max-width: 900px) {
     padding-left: 0;
     font-size: 15px;
@@ -305,20 +300,10 @@ const StyledTitle = styled.h1`
 
 `
 const StyledH2 = styled.div`
-  font-size: 25px;
+  font-size: 30px;
   text-align: center;
-  background-color: #f5c474;
-  color: white;
-  border-radius: 50px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 5px;
-  @media (max-width: 510px) {
-    font-size: 20px;
-  }
-
+  color: #333;
 `
-
 
 const StyledImage = styled.img`
   max-width: 50%;
@@ -355,20 +340,6 @@ const GodotContainer = styled.div`
   }
 `
 
-const StyledLink = styled.a`
-  color: #f5c474;
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: 600;
-  &:hover {
-    color: #f5c474;
-    text-decoration: underline;
-  }
-  @media (max-width: 800px) {
-    font-size: 15px;
-  }
-`
-
 export const MainPage = () => {
   return (
     <StyledContainer>
@@ -384,7 +355,8 @@ export const MainPage = () => {
 
         <StyledRowPadding size={"20px"} />
 
-        
+        <DiscordButton/>
+
         <StyledRowPadding size={"25px"} />
         <StyledH2>Stage Example Mockup: Classroom</StyledH2>
         
@@ -431,7 +403,7 @@ export const MainPage = () => {
 
         <StyledRowPadding size={"30px"} />
 
-        <span style={{fontSize: "35px", textAlign: "center"}}>Dozens of Unique Stages</span>
+        <StyledH2>Dozens of Unique Stages</StyledH2>
         
         <StyledRowPadding size={"20px"} />
 
@@ -476,7 +448,7 @@ export const MainPage = () => {
         
         <StyledRowPadding size={"50px"} />
         
-        <span style={{fontSize: "35px", textAlign: "center"}}>Great Party Game Fun!</span>
+        <StyledH2>Great Party Game Fun!</StyledH2>
 
         <StyledRowPadding size={"25px"} />
         <StyledContentText style={{color: "#606060"}}>
@@ -488,7 +460,7 @@ export const MainPage = () => {
           <StyledTextBubble>
             <StyledBubbleTitleRed>Chaotic Fighting</StyledBubbleTitleRed>
             <StyledBubbleTextRed>
-            When everyone has to stop and act casual are juxtaposed with the immediate chaos following the NPC looking away and the fighting resuming.
+            Try to control ragdoll alien characters with crazy weapons into chaotic fights!
             </StyledBubbleTextRed>
             <StyledBubbleRed />
           </StyledTextBubble>
@@ -501,7 +473,7 @@ export const MainPage = () => {
             <StyledVideo style={{borderColor: '#e98dd4'}} width="100%" height="100%" autoPlay loop src="Assets/2-combat.mp4"/>
           <StyledTextBubble>
             <StyledBubblePurple />
-            <StyledBubbleTitlePurple>Combat & Cooperation</StyledBubbleTitlePurple>
+            <StyledBubbleTitlePurple>Combat & Social</StyledBubbleTitlePurple>
             <StyledBubbleTextPurple style={{color: "white", marginTop: "20px"}}>
             The goofy environment creates an exciting social experience that balances combat and cooperation.
             </StyledBubbleTextPurple>
@@ -531,7 +503,7 @@ export const MainPage = () => {
           <ReactGodot script="ReactGodot.js" pck="ReactGodot.pck" exec="ReactGodot"/>
         </GodotContainer> */}
 
-        <span style={{fontSize: "40px"}}>The Team</span>
+        <StyledH2>The Team</StyledH2>
         <StyledRowPadding size={"20px"} />
   
 
@@ -595,11 +567,7 @@ export const MainPage = () => {
 
         <StyledRowPadding size={"20px"} />
 
-        <span style={{fontSize: "40px"}}>Join our Discord</span>
-
-        <span style={{fontSize: "25px", textAlign:"center"}}>
-        <StyledLink target="_blank" href="https://discord.gg/uw9RP68uSu">https://discord.gg/uw9RP68uSu</StyledLink>
-        </span>
+        <DiscordButton/>
 
         <StyledRowPadding size={"20px"} />
 

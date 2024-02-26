@@ -2,7 +2,6 @@ import { color } from "../theme/color"
 import React from "react"
 import styled from "styled-components"
 
-import { StyledPixelatedDiv } from "./sharedStyled"
 import { DiscordIcon, TwitterIcon } from "./Icons"
 
 // TODO is this the best way to do this?
@@ -73,15 +72,15 @@ const StyledDiscordContainer = styled.a`
   padding: 1px 5px;
   border-radius: 4px;
   cursor: pointer;
-  margin-right: 20px;
+  margin: 0 20px;
 `
 
 export const DiscordButton = () => {
-  const goToDiscord = () => openInNewTab("https://discord.gg/D3Ban34")
+  const goToDiscord = () => openInNewTab("https://discord.gg/uw9RP68uSu")
   return (
     <StyledDiscordContainer onClick={goToDiscord}>
       <DiscordIcon width="40px" height="40px" fill="white" />
-      <span style={{ width: "100%", textAlign: "center" }}>Discord</span>
+      <span style={{ width: "100%", textAlign: "center" }}>Join Our Discord</span>
     </StyledDiscordContainer>
   )
 }
