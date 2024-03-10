@@ -551,7 +551,8 @@ export const MainPage = () => {
             <StyledMemberTitle>Victor</StyledMemberTitle>
             <StyledMemberSubTitle>Concept Artist</StyledMemberSubTitle>
             <StyledMemberText>
-              -  Art History (NYU)<br />
+              - Art History (NYU)<br />
+              - Favorite games: Dark Souls series, Final Fantasy 14 and Darkest Dungeon
             </StyledMemberText>
           </StyledMember>
           <StyledMember>
