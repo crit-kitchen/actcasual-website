@@ -543,7 +543,7 @@ export const MainPage = () => {
             <StyledMemberTitle>Irene</StyledMemberTitle>
             <StyledMemberSubTitle>Game Designer</StyledMemberSubTitle>
             <StyledMemberText>- Arts Technology and the Business of Innovation (USC) <br />
-              - Software Engineer at Volvo<br />
+              - Founding member of multiple apps<br />
               - Favorite game: ToTK</StyledMemberText>
           </StyledMember>
           <StyledMember>
