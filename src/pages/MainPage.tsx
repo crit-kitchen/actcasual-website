@@ -2,17 +2,20 @@ import styled from "styled-components";
 
 import { StyledRowPadding } from "../components/sharedStyled";
 import { DiscordButton } from "@/components/Buttons";
+import { Carousel } from "antd";
 
 const StyledLogo = styled.img`
   max-width: 500px;
   width: 100%;
-  margin: 40px 0;
+  margin: 0 auto;
+  padding: 40px 0;
 `;
 
 const StyledContentColumn = styled.div`
-  display: flex;
+  // display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   margin: auto;
   align-items: center;
   max-width: 900px;
@@ -236,7 +239,7 @@ const StyledMemberIcon = styled.div`
 `;
 const StyledMemberTitle = styled.div`
   color: black;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 900;
   width: 100%;
   text-align: center;
@@ -258,7 +261,8 @@ const StyledContentText = styled.div`
   font-size: 20px;
   text-align: center;
   z-index: 1;
-  line-height: 1;
+  line-height: 1.2;
+  margin: 0 auto;
 `;
 const StyledContainer = styled.div`
   padding: 48px 24px;
@@ -268,25 +272,6 @@ const StyledContainer = styled.div`
   overflow-x: hidden;
 `;
 
-const StyledTitle = styled.h1`
-  margin: 24px 0;
-  text-align: center;
-  font-size: 80px;
-  line-height: 1;
-  text-shadow: 4px 4px #be6b29;
-  color: RGB(254, 241, 118);
-  background-color: #f5c474;
-  border-radius: 50px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-bottom: 10px;
-  @media (max-width: 560px) {
-    font-size: 60px;
-  }
-  @media (max-width: 470px) {
-    font-size: 40px;
-  }
-`;
 const StyledH2 = styled.div`
   font-size: 30px;
   text-align: center;
@@ -318,6 +303,16 @@ const StyledYoutube = styled.iframe`
   max-width: 600px;
 `;
 
+const StyledSlide = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+`;
+
 export const MainPage = () => {
   return (
     <StyledContainer>
@@ -338,7 +333,9 @@ export const MainPage = () => {
 
         <StyledRowPadding size={"20px"} />
 
-        <DiscordButton />
+        <StyledMember>
+          <DiscordButton />
+        </StyledMember>
 
         <StyledRowPadding size={"25px"} />
         <StyledYoutube
@@ -503,83 +500,28 @@ export const MainPage = () => {
 
         <StyledH2>Great Party Game Fun!</StyledH2>
 
+        <Carousel autoplay>
+          {[...Array(7).keys()].map((slideImage) => (
+            <div>
+              <StyledSlide
+                style={{
+                  backgroundImage: `url(Assets/Screenshots/${
+                    slideImage + 1
+                  }.jpg)`,
+                }}
+              />
+            </div>
+          ))}
+        </Carousel>
+
         <StyledRowPadding size={"25px"} />
-        <StyledContentText style={{ color: "#606060" }}>
+        <StyledContentText style={{ maxWidth: "600px", color: "#606060" }}>
           With tight and simple mechanics,{" "}
           <span style={{ color: "black" }}>Act Casual</span> is made for
-          replayability, hilarity, and fun.
+          replayability, hilarity, and fun. Goof off with friends using ragdoll
+          physics in diverse stages, wielding dozens of unique weapons, and
+          engage in uproarious minigames.
         </StyledContentText>
-        <StyledRowPadding size={"40px"} />
-
-        <StyledBubbleRow>
-          <StyledTextBubble>
-            <StyledBubbleTitleRed>Chaotic Fighting</StyledBubbleTitleRed>
-            <StyledBubbleTextRed>
-              Try to control ragdoll alien characters with crazy weapons into
-              chaotic fights!
-            </StyledBubbleTextRed>
-            <StyledBubbleRed />
-          </StyledTextBubble>
-          <StyledVideo
-            style={{ borderColor: "#ea8d8a" }}
-            width="100%"
-            height="100%"
-            autoPlay
-            loop
-            muted
-            src="Assets/1-chaotic.mp4"
-          />
-        </StyledBubbleRow>
-
-        <StyledRowPadding size={"40px"} />
-
-        <StyledBubbleRow
-          style={{ justifyContent: "center", alignItems: "center" }}
-        >
-          <StyledVideo
-            style={{ borderColor: "#e98dd4" }}
-            width="100%"
-            height="100%"
-            autoPlay
-            loop
-            muted
-            src="Assets/2-combat.mp4"
-          />
-          <StyledTextBubble>
-            <StyledBubblePurple />
-            <StyledBubbleTitlePurple>Combat & Social</StyledBubbleTitlePurple>
-            <StyledBubbleTextPurple
-              style={{ color: "white", marginTop: "20px" }}
-            >
-              The goofy environment creates an exciting social experience that
-              balances combat and cooperation.
-            </StyledBubbleTextPurple>
-          </StyledTextBubble>
-        </StyledBubbleRow>
-
-        <StyledRowPadding size={"40px"} />
-
-        <StyledBubbleRow
-          style={{ justifyContent: "center", alignItems: "center" }}
-        >
-          <StyledTextBubble>
-            <StyledBubbleBlue />
-            <StyledBubbleTitleBlue>Tense Moments</StyledBubbleTitleBlue>
-            <StyledBubbleTextBlue style={{ color: "white" }}>
-              Enjoy mini-games in-between fights where everyone else is chasing
-              behind you.
-            </StyledBubbleTextBlue>
-          </StyledTextBubble>
-          <StyledVideo
-            style={{ borderColor: "#96c5f4" }}
-            width="100%"
-            height="100%"
-            autoPlay
-            loop
-            muted
-            src="Assets/3-tense.mp4"
-          />
-        </StyledBubbleRow>
 
         <StyledRowPadding size={"50px"} />
 
@@ -676,7 +618,9 @@ export const MainPage = () => {
 
         <StyledRowPadding size={"20px"} />
 
-        <DiscordButton />
+        <StyledMember>
+          <DiscordButton />
+        </StyledMember>
 
         <StyledRowPadding size={"20px"} />
 

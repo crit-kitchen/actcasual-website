@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@snowpack/plugin-babel": "^2.1.7",
+    "antd": "^5.16.5",
     "babel": "^6.23.0",
     "buffer": "^5.7.1",
     "eslint-config-react-app": "^7.0.0",
@@ -21,7 +22,6 @@
     "react-iframe": "^1.8.0",
     "react-query": "^3.6.0",
     "react-responsive-spritesheet": "^2.3.9",
-    "react-slideshow-image": "^4.3.1",
     "react-sprite-animator": "^2.0.1",
     "styled-components": "^5.2.1"
   },
