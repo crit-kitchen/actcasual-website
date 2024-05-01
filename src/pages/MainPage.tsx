@@ -316,7 +316,7 @@ const StyledYoutube = styled.iframe`
   aspect-ratio: 16 / 9;
   width: 100%;
   max-width: 600px;
-`
+`;
 
 export const MainPage = () => {
   return (
@@ -331,9 +331,9 @@ export const MainPage = () => {
           <span style={{ color: "black" }}>
             chaotic and fun ragdoll-physics combat
           </span>
-          . You are aliens but are disguised as humans and must maintain
-          their disguises or face survival challenges in dynamic minigames
-          across various stages. 
+          . You are aliens but are disguised as humans and must maintain their
+          disguises or face survival challenges in dynamic minigames across
+          various stages.
         </StyledContentText>
 
         <StyledRowPadding size={"20px"} />
@@ -351,7 +351,7 @@ export const MainPage = () => {
         ></StyledYoutube>
 
         <StyledRowPadding size={"25px"} />
-        <StyledH2>Stage Example Mockup: Classroom</StyledH2>
+        <StyledH2>Stage Example: Classroom</StyledH2>
 
         <StyledRowPadding size={"15px"} />
 
@@ -364,13 +364,30 @@ export const MainPage = () => {
             </StyledBubbleTextRed>
             <StyledBubbleRed />
           </StyledTextBubble>
-          <StyledImage src="Assets/animation1.gif" />
+          {/* <StyledImage src="Assets/animation1.gif" /> */}
+          <StyledVideo
+            style={{ borderColor: "#ea8d8a" }}
+            width="100%"
+            height="100%"
+            autoPlay
+            loop
+            muted
+            src="Assets/A1-fight.mp4"
+          />
         </StyledBubbleRow>
         <StyledRowPadding size={"40px"} />
         <StyledBubbleRow
           style={{ justifyContent: "center", alignItems: "center" }}
         >
-          <StyledImage src="Assets/animation2.gif" />
+          <StyledVideo
+            style={{ borderColor: "#e98dd4" }}
+            width="100%"
+            height="100%"
+            autoPlay
+            loop
+            muted
+            src="Assets/A2-weapons.mp4"
+          />
           <StyledTextBubble>
             <StyledBubblePurple />
             <StyledBubbleTitlePurple>
@@ -397,7 +414,15 @@ export const MainPage = () => {
               acting casual, lest you incur the teacher's wrath!
             </StyledBubbleTextBlue>
           </StyledTextBubble>
-          <StyledImage src="Assets/animation3.gif" />
+          <StyledVideo
+            style={{ borderColor: "#96c5f4" }}
+            width="100%"
+            height="100%"
+            autoPlay
+            loop
+            muted
+            src="Assets/A3-caught.mp4"
+          />
         </StyledBubbleRow>
 
         <StyledRowPadding size={"30px"} />
@@ -557,13 +582,7 @@ export const MainPage = () => {
         </StyledBubbleRow>
 
         <StyledRowPadding size={"50px"} />
-        {/* <span style={{fontSize: "40px", textAlign: "center"}}>Game Concept Demo</span>
-  
-      
-        <GodotContainer>
-          <ReactGodot script="ReactGodot.js" pck="ReactGodot.pck" exec="ReactGodot"/>
-        </GodotContainer> */}
-
+        
         <StyledH2>The Team</StyledH2>
         <StyledRowPadding size={"20px"} />
 
