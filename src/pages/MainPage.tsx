@@ -301,6 +301,7 @@ const StyledYoutube = styled.iframe`
   aspect-ratio: 16 / 9;
   width: 100%;
   max-width: 600px;
+  border: 0;
 `;
 
 const StyledSlide = styled.div`
@@ -341,7 +342,6 @@ export const MainPage = () => {
         <StyledYoutube
           src="https://www.youtube.com/embed/ad61m8Qklno?si=sdJ2hKgNBR2hOCMu"
           title="YouTube video player"
-          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen
