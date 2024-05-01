@@ -582,7 +582,7 @@ export const MainPage = () => {
         </StyledBubbleRow>
 
         <StyledRowPadding size={"50px"} />
-        
+
         <StyledH2>The Team</StyledH2>
         <StyledRowPadding size={"20px"} />
 
