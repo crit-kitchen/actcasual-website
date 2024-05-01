@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { StyledRowPadding } from "../components/sharedStyled";
-import { DiscordButton } from "@/components/Buttons";
+import { DiscordButton } from "../components/Buttons";
 import { Carousel } from "antd";
 
 const StyledLogo = styled.img`
@@ -343,8 +343,6 @@ export const MainPage = () => {
           src="https://www.youtube.com/embed/ad61m8Qklno?si=sdJ2hKgNBR2hOCMu"
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
         ></StyledYoutube>
 
         <StyledRowPadding size={"25px"} />
