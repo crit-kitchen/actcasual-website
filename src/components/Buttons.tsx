@@ -1,14 +1,14 @@
-import { color } from "../theme/color"
-import React from "react"
-import styled from "styled-components"
+import { color } from "../theme/color";
+import React from "react";
+import styled from "styled-components";
 
-import { DiscordIcon, TwitterIcon } from "./Icons"
+import { DiscordIcon, SteamIcon } from "./Icons";
 
 // TODO is this the best way to do this?
 const openInNewTab = (url: string) => {
-  const newWindow = window.open(url, "_blank", "noopener,noreferrer")
-  if (newWindow) newWindow.opener = null
-}
+  const newWindow = window.open(url, "_blank", "noopener,noreferrer");
+  if (newWindow) newWindow.opener = null;
+};
 
 const StyledTextContainer = styled.button`
   display: flex;
@@ -34,14 +34,14 @@ const StyledTextContainer = styled.button`
       rgba(0, 0, 0, 0.3) 0px 3.5px 6.5px -1.5px,
       rgba(0, 0, 0, 0.2) 0px -1.5px 0px inset;
   }
-`
+`;
 
 export const TextButton = ({
   children,
   ...props
 }: React.ButtonHTMLAttributes<HTMLButtonElement>) => {
-  return <StyledTextContainer {...props}>{children}</StyledTextContainer>
-}
+  return <StyledTextContainer {...props}>{children}</StyledTextContainer>;
+};
 
 export const DivButton = ({
   children,
@@ -50,7 +50,7 @@ export const DivButton = ({
   return (
     <div
       onKeyDown={() => {
-        return
+        return;
       }}
       role={"button"}
       tabIndex={0}
@@ -58,51 +58,42 @@ export const DivButton = ({
     >
       {children}
     </div>
-  )
-}
+  );
+};
 
-
-const StyledDiscordContainer = styled.a`
+const StyledButtonContainer = styled.a`
   color: white;
   display: flex;
   align-items: center;
-  //border: 2px solid ${({ theme }) => theme.color.darkDiscordPurple};
-  background-color: ${({ theme }) => theme.color.discordPurple};
+  background-color: ;
   width: fit-content;
-  padding: 1px 5px;
+  padding: 2px 5px;
+  height: 40px;
   border-radius: 4px;
   cursor: pointer;
-  margin: 0 20px;
-`
+  margin: 5px 10px;
+`;
 
 export const DiscordButton = () => {
-  const goToDiscord = () => openInNewTab("https://discord.gg/uw9RP68uSu")
+  const goToDiscord = () => openInNewTab("https://discord.gg/uw9RP68uSu");
   return (
-    <StyledDiscordContainer onClick={goToDiscord}>
+    <StyledButtonContainer onClick={goToDiscord} style={{backgroundColor: color.discordPurple}}>
       <DiscordIcon width="40px" height="40px" fill="white" />
-      <span style={{ width: "100%", textAlign: "center" }}>Join Our Discord</span>
-    </StyledDiscordContainer>
-  )
-}
+      <span style={{ width: "100%", textAlign: "center" }}>
+        Join Our Discord
+      </span>
+    </StyledButtonContainer>
+  );
+};
 
-const StyledTwitterContainer = styled.a`
-  color: white;
-  display: flex;
-  align-items: center;
-  //border: 2px solid ${({ theme }) => theme.color.oceanBlue};
-  background-color: ${({ theme }) => theme.color.twitterBlue};
-  width: fit-content;
-  padding: 1px 5px;
-  border-radius: 4px;
-  cursor: pointer;
-`
-
-export const TwitterButton = () => {
-  const goToTwitter = () => openInNewTab("https://twitter.com/SuperCTFGame")
+export const SteamButton = () => {
+  const goToSteam = () => openInNewTab("https://actcasual.net/steam/");
   return (
-    <StyledTwitterContainer onClick={goToTwitter}>
-      <TwitterIcon width="40px" height="40px" fill="white" />
-      <span style={{ width: "100%", textAlign: "center" }}>Twitter</span>
-    </StyledTwitterContainer>
-  )
-}
+    <StyledButtonContainer onClick={goToSteam} style={{backgroundColor: color.steamPurple}}>
+      <SteamIcon width="30px" height="30px" fill="white" />
+      <span style={{ width: "100%", textAlign: "center", marginLeft: "4px" }}>
+        Wishlist on Steam
+      </span>
+    </StyledButtonContainer>
+  );
+};

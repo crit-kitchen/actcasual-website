@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { StyledRowPadding } from "../components/sharedStyled";
-import { DiscordButton } from "../components/Buttons";
+import { DiscordButton, SteamButton } from "../components/Buttons";
 import { Carousel } from "antd";
 
 const StyledLogo = styled.img`
@@ -35,6 +35,7 @@ const StyledBubbleRow = styled.div`
     flex-direction: column;
     max-width: 400px;
     height: 400px;
+    margin: 0 auto;
   }
 `;
 
@@ -314,6 +315,18 @@ const StyledSlide = styled.div`
   aspect-ratio: 16 / 9;
 `;
 
+
+const StyledButtonsFlexRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
+`;
+
 export const MainPage = () => {
   return (
     <StyledContainer>
@@ -334,9 +347,10 @@ export const MainPage = () => {
 
         <StyledRowPadding size={"20px"} />
 
-        <StyledMember>
+        <StyledButtonsFlexRow>
           <DiscordButton />
-        </StyledMember>
+          <SteamButton />
+        </StyledButtonsFlexRow>
 
         <StyledRowPadding size={"25px"} />
         <StyledYoutube
@@ -616,9 +630,10 @@ export const MainPage = () => {
 
         <StyledRowPadding size={"20px"} />
 
-        <StyledMember>
+        <StyledButtonsFlexRow>
           <DiscordButton />
-        </StyledMember>
+          <SteamButton />
+        </StyledButtonsFlexRow>
 
         <StyledRowPadding size={"20px"} />
 

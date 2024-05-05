@@ -1,5 +1,4 @@
 
-// import _ from "lodash/fp"
 import { MainPage } from "./pages/MainPage"
 
 const App = () => {

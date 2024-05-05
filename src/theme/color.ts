@@ -12,6 +12,8 @@ export const color = {
   royalePurple: "#b62ff0",
   discordPurple: "#7289da",
   darkDiscordPurple: "#5e78d5",
+  steamPurple: "#1b2838",
+  darkSteamPurple: "#171a21",
   twitterBlue: "#1DA1F2",
   darkGreen: "rgb(1, 128, 0)",
   lightGreen: `rgb(113, 246, 72)`,
