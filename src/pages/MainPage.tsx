@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 import { StyledRowPadding } from "../components/sharedStyled";
-import { DiscordButton, SteamButton } from "../components/Buttons";
-import { Carousel } from "antd";
 import {
   SlimeBackground,
   SlimeColorTheme,
@@ -42,21 +40,6 @@ const NavContact = styled.a`
   }
 `;
 
-const StyledContentColumn = styled.div`
-  // display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  margin: auto;
-  align-items: center;
-  max-width: 900px;
-  background-color: rgba(254, 252, 254, 0.8);
-  border-radius: 100px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
-`;
 const StyledContentColumn2 = styled.div`
   // display: flex;
   flex-direction: column;
@@ -102,46 +85,12 @@ const StyledContainer = styled.div`
   font-family: 'Tilt Warp', Sans-Serif;
 `;
 
-const StyledH2 = styled.div`
-  font-size: 30px;
-  text-align: center;
-  color: #333;
-`;
-
-const StyledImage = styled.img`
-  max-width: 50%;
-  max-height: 50%;
-  @media (max-width: 800px) {
-    max-width: 100%;
-  }
-`;
-
-const StyledVideo = styled.video`
-  max-width: 45%;
-  max-height: 50%;
-  @media (max-width: 800px) {
-    max-width: 100%;
-  }
-  border-radius: 15px;
-  border: 7px solid red;
-  overflow: hidden;
-`;
 
 const StyledYoutube = styled.iframe`
   aspect-ratio: 16 / 9;
   width: 100%;
   max-width: 600px;
   border: 0;
-`;
-
-const StyledSlide = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-size: cover;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
 `;
 
 
