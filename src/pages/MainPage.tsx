@@ -139,7 +139,7 @@ export const MainPage = () => {
 
       <StyledContentColumn2>
           <StyledYoutube
-            src="https://www.youtube.com/embed/dYSNwrjq5IE?si=bGYTmgqsKvv-nJUV"
+            src="https://www.youtube.com/embed/uwSuaSkr1pE?si=Vw68bbVzNNL1pDro"
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           ></StyledYoutube>
