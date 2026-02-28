@@ -4,11 +4,18 @@ const PURPLE = '#B980E5'
 const BLUE = '#67BDDB'
 const GREEN = '#9AD357'
 const TEXT = '#FEFDFC'
-const MOBILE = '768px'
+const BP_SM = '580px'
+const BP_MD = '768px'
+const BP_LG = '1180px'
+const BP_XL = '1500px'
 const NAV_HEIGHT = '64px'
+const NAV_HEIGHT_MOBILE = '52px'
+const WAVE_H = 88
+// 60% of wave height — how far GooWrapper overlaps into the hero
+const SWIRL_OVERLAP = Math.round(WAVE_H * 0.6)
 
 /* -------------------------------------------------------------------------- */
-/*  Wave divider — 3 distinct paths, absolutely positioned at section bottom  */
+/*  Wave shapes                                                                */
 /* -------------------------------------------------------------------------- */
 
 const WAVE_PATHS = {
@@ -17,9 +24,31 @@ const WAVE_PATHS = {
   3: 'M0,58 C80,28 220,82 400,44 C580,6 720,72 880,46 C1040,20 1200,78 1340,42 C1400,24 1430,62 1440,52 L1440,88 L0,88 Z',
 }
 
+/*
+ * WaveIntro — in-flow SVG placed as the first child of GooWrapper.
+ * GooWrapper has margin-top: -WAVE_H, so this SVG visually overlaps the
+ * bottom of HeroSection. The transparent upper portion shows the hero image
+ * (already darkened by the gradient); the filled lower portion is the first
+ * colored section's background color.
+ */
+const WaveIntro = ({ color }: { color: string }) => (
+  <svg
+    viewBox={`0 0 1440 ${WAVE_H}`}
+    preserveAspectRatio="none"
+    aria-hidden="true"
+    style={{ display: 'block', width: '100%', height: `${WAVE_H}px` }}
+  >
+    <path d={WAVE_PATHS[1]} fill={color} />
+  </svg>
+)
+
+/*
+ * WaveBottom — absolutely positioned at the bottom of a section, transitioning
+ * to the next section's color. Lives inside GooWrapper so GooSwirl covers it.
+ */
 const WaveBottom = ({ color, variant = 1 }: { color: string; variant?: 1 | 2 | 3 }) => (
   <svg
-    viewBox="0 0 1440 88"
+    viewBox={`0 0 1440 ${WAVE_H}`}
     preserveAspectRatio="none"
     aria-hidden="true"
     style={{
@@ -27,7 +56,7 @@ const WaveBottom = ({ color, variant = 1 }: { color: string; variant?: 1 | 2 | 3
       bottom: 0,
       left: 0,
       width: '100%',
-      height: '88px',
+      height: `${WAVE_H}px`,
       display: 'block',
       zIndex: 1,
     }}
@@ -55,21 +84,27 @@ const Nav = styled.nav`
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 
-  @media (max-width: ${MOBILE}) {
+  @media (max-width: ${BP_MD}) {
     padding: 0 20px;
+    height: ${NAV_HEIGHT_MOBILE};
   }
 `
 
 const NavLogo = styled.img`
-  height: 56px;
+  height: 54px;
+  margin-bottom: 2px;
   width: auto;
+
+  @media (max-width: ${BP_MD}) {
+    height: 44px;
+  }
 `
 
 const NavLinks = styled.div`
   display: flex;
   gap: 36px;
 
-  @media (max-width: ${MOBILE}) {
+  @media (max-width: ${BP_MD}) {
     gap: 20px;
   }
 `
@@ -92,40 +127,91 @@ const NavLink = styled.a`
 
 const HeroSection = styled.section`
   position: relative;
-  min-height: 100vh;
-  background-image: url('Assets/ACKeyArt1.jpg');
-  background-size: cover;
-  background-position: 65% 30%;
+  height: 740px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: 128px;
+  padding-bottom: 104px;
 
-  @media (max-width: ${MOBILE}) {
-    background-position: 50% 0%;
-    padding-bottom: 112px;
+  @media (max-width: ${BP_MD}) {
+    padding-bottom: 96px;
+    height: 700px;
+  }
+
+  @media (max-width: ${BP_SM}) {
+    padding-bottom: 84px;
+    height: 600px;
+  }
+`
+
+const HeroImage = styled.img`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.25);
+  object-position: 0% 55%;
+  transform-origin: 0% 55%;
+  pointer-events: none;
+  user-select: none;
+
+  @media (max-width: ${BP_XL}) {
+    transform: scale(1.25);
+    object-position: 20% 70%;
+    transform-origin: 20% 70%;
+  }
+
+  @media (max-width: ${BP_LG}) {
+    transform: scale(1.25);
+    object-position: 40% 80%;
+    transform-origin: 40% 80%;
+  }
+
+  @media (max-width: ${BP_MD}) {
+    transform: scale(1.1);
+    object-position: 50% 30%;
+    transform-origin: 50% 30%;
+  }
+
+  @media (max-width: ${BP_SM}) {
+    transform: scale(1.1);
+    object-position: 50% 40%;
+    transform-origin: 50% 40%;
   }
 `
 
 const HeroGradient = styled.div`
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 35%, rgba(0, 0, 0, 0.78) 100%);
+  background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.7) 100%);
   pointer-events: none;
 `
 
 const HeroLogo = styled.img`
   position: absolute;
-  top: 80px;
-  left: 48px;
-  height: 380px;
+  top: 72px;
+  left: 16px;
+  height: 360px;
   width: auto;
 
-  @media (max-width: ${MOBILE}) {
+  @media (max-width: ${BP_LG}) {
+    top: 72px;
+    left: 12px;
+    height: 300px;
+  }
+
+  @media (max-width: ${BP_MD}) {
     left: 50%;
     transform: translateX(-50%);
+    height: 260px;
+    top: 56px;
+  }
+
+  @media (max-width: ${BP_SM}) {
     height: 220px;
-    top: 80px;
+    top: 54px;
   }
 `
 
@@ -134,7 +220,7 @@ const HeroTextBlock = styled.div`
   z-index: 1;
   padding: 0 48px;
 
-  @media (max-width: ${MOBILE}) {
+  @media (max-width:${BP_MD}) {
     text-align: center;
     padding: 0 28px;
   }
@@ -147,7 +233,7 @@ const ComingSoon = styled.p`
   font-size: 13px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  margin-bottom: 10px;
+  margin-bottom: 4px;
   opacity: 0.85;
 `
 
@@ -163,32 +249,72 @@ const HeroDescription = styled.p`
     font-weight: 700;
   }
 
-  @media (max-width: ${MOBILE}) {
-    font-size: 20px;
+  @media (max-width: ${BP_LG}) {
+    font-size: 24px;
+    line-height: 1.45;
+    max-width: 560px;
+  }
+
+  @media (max-width: ${BP_MD}) {
+    font-size: 22px;
     max-width: 100%;
     margin: 0 auto;
+    line-height: 1.4;
   }
+
+  @media (max-width: ${BP_SM}) {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+`
+
+/* -------------------------------------------------------------------------- */
+/*  Goo wrapper — unified swirl over all colored sections + the intro wave    */
+/* -------------------------------------------------------------------------- */
+
+/*
+ * Pulls up by WAVE_H px so WaveIntro (the first in-flow child) overlaps
+ * the bottom of HeroSection. GooSwirl covers the entire wrapper including
+ * that overlap zone, giving the intro wave consistent swirl texture while
+ * leaving the key art above untouched.
+ */
+/*
+ * isolation: isolate creates a local stacking context so z-indexes inside
+ * (waves=1, swirl=2, content=3) are self-contained and don't bleed out.
+ * margin-top: -SWIRL_OVERLAP pulls the wrapper up so WaveIntro overlaps
+ * just the bottom of the hero (already darkened by the gradient).
+ */
+const GooWrapper = styled.div`
+  position: relative;
+  isolation: isolate;
+  margin-top: -${WAVE_H}px;
+`
+
+/*
+ * Single swirl covering the entire GooWrapper. z-index 2 places it above
+ * section backgrounds and waves (z-index 1) but below content (z-index 3),
+ * so text, GIFs, and video render on top. The mask gradient fades the swirl
+ * in from transparent at the top to avoid a hard edge where it overlaps the hero.
+ */
+const GooSwirl = styled.img`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.04;
+  pointer-events: none;
+  user-select: none;
+  z-index: 2;
+  mask-image: linear-gradient(to bottom, transparent 0, transparent ${SWIRL_OVERLAP}px, black ${SWIRL_OVERLAP + 70}px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, transparent ${SWIRL_OVERLAP}px, black ${SWIRL_OVERLAP + 70}px);
 `
 
 /* -------------------------------------------------------------------------- */
 /*  Shared section utilities                                                   */
 /* -------------------------------------------------------------------------- */
 
-/* z-index 2 so it renders above the wave (z-index 1) in the same section */
-const SwirlOverlay = styled.img`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.04;
-  pointer-events: none;
-  z-index: 2;
-  user-select: none;
-`
-
-/* z-index 3 so content sits above the swirl */
+/* z-index 3 keeps content above WaveBottom (z-index 1) within each section */
 const SectionContent = styled.div`
   position: relative;
   z-index: 3;
@@ -202,22 +328,11 @@ const SectionHeading = styled.h2`
   margin-bottom: 48px;
   scroll-margin-top: ${NAV_HEIGHT};
 
-  @media (max-width: ${MOBILE}) {
+  @media (max-width: ${BP_MD}) {
     font-size: 30px;
     margin-bottom: 32px;
-  }
-`
-
-const HideOnMobile = styled.span`
-  @media (max-width: ${MOBILE}) {
-    display: none;
-  }
-`
-
-const ShowOnMobile = styled.span`
-  display: none;
-  @media (max-width: ${MOBILE}) {
-    display: inline;
+    scroll-margin-top: ${NAV_HEIGHT_MOBILE};
+    line-height: 1.2;
   }
 `
 
@@ -228,23 +343,25 @@ const ShowOnMobile = styled.span`
 const SetupSection = styled.section`
   position: relative;
   background-color: ${PURPLE};
-  padding: 80px 64px 140px;
+  padding: 60px 64px 150px;
   overflow: hidden;
   scroll-margin-top: ${NAV_HEIGHT};
 
-  @media (max-width: ${MOBILE}) {
-    padding: 60px 28px 120px;
+  @media (max-width: ${BP_MD}) {
+    padding: 45px 28px 130px;
+    scroll-margin-top: ${NAV_HEIGHT_MOBILE};
   }
 `
 
 const SetupGrid = styled.div`
   display: flex;
   gap: 52px;
+  justify-content: center;
   align-items: flex-start;
   max-width: 960px;
   margin: 0 auto;
 
-  @media (max-width: ${MOBILE}) {
+  @media (max-width: ${BP_MD}) {
     flex-direction: column;
     align-items: center;
     gap: 32px;
@@ -257,12 +374,21 @@ const SetupGifWrapper = styled.div`
   border-radius: 16px;
   overflow: hidden;
   flex-shrink: 0;
+  margin-top: 8px;
 
-  @media (max-width: ${MOBILE}) {
+  @media (max-width: 920px) {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    aspect-ratio: 0.8;
+  }
+
+  @media (max-width: ${BP_MD}) {
     width: 100%;
     max-width: 340px;
     height: auto;
-    aspect-ratio: 1;
+    aspect-ratio: 1.5;
+    margin-top: 0px;
   }
 `
 
@@ -278,7 +404,7 @@ const SetupText = styled.div`
   font-family: 'MadeTommySoft', sans-serif;
   font-weight: 500;
   font-size: 23px;
-  line-height: 1.65;
+  line-height: 1.6;
   max-width: 440px;
 
   p + p {
@@ -289,9 +415,15 @@ const SetupText = styled.div`
     font-weight: 700;
   }
 
-  @media (max-width: ${MOBILE}) {
-    font-size: 18px;
-    max-width: 100%;
+  @media (max-width: 900px) {
+    font-size: 22px;
+    line-height: 1.45;
+  }
+
+  @media (max-width: ${BP_MD}) {
+    font-size: 20px;
+    line-height: 1.45;
+    max-width: 560px;
   }
 `
 
@@ -302,15 +434,16 @@ const SetupText = styled.div`
 const TeaserSection = styled.section`
   position: relative;
   background-color: ${BLUE};
-  padding: 80px 64px 140px;
+  padding: 60px 64px 140px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   scroll-margin-top: ${NAV_HEIGHT};
 
-  @media (max-width: ${MOBILE}) {
-    padding: 60px 28px 120px;
+  @media (max-width: ${BP_MD}) {
+    padding: 50px 28px 120px;
+    scroll-margin-top: ${NAV_HEIGHT_MOBILE};
   }
 `
 
@@ -336,28 +469,22 @@ const VideoIframe = styled.iframe`
 const ContactSection = styled.section`
   position: relative;
   background-color: ${GREEN};
-  padding: 80px 64px 100px;
+  padding: 80px 64px 160px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   scroll-margin-top: ${NAV_HEIGHT};
 
-  @media (max-width: ${MOBILE}) {
-    padding: 60px 28px 80px;
+  @media (max-width: ${BP_MD}) {
+    padding: 60px 28px 120px;
+    scroll-margin-top: ${NAV_HEIGHT_MOBILE};
   }
 `
 
 const ContactBlock = styled.div`
   text-align: center;
   color: ${TEXT};
-`
-
-const ContactName = styled.p`
-  font-family: 'MadeTommySoft', sans-serif;
-  font-weight: 700;
-  font-size: 22px;
-  margin-bottom: 2px;
 `
 
 const ContactEmail = styled.a`
@@ -367,13 +494,13 @@ const ContactEmail = styled.a`
   font-size: 26px;
   color: ${TEXT};
   text-decoration: none;
-  margin: 4px 0 6px;
+  margin: 1px 0 4px;
 
   &:hover {
     text-decoration: underline;
   }
 
-  @media (max-width: ${MOBILE}) {
+  @media (max-width: ${BP_MD}) {
     font-size: 20px;
   }
 `
@@ -394,16 +521,17 @@ export const MainPage = () => {
     <>
       {/* Nav */}
       <Nav>
-        <NavLogo src="Assets/ACLogo2.png" alt="Act Casual" />
+        <a href="#top"><NavLogo src="Assets/ACLogoSimple.png" alt="Act Casual" /></a>
         <NavLinks>
           <NavLink href="#about">About</NavLink>
-          <NavLink href="#teaser">Teaser</NavLink>
-          <NavLink href="#contact">Contact</NavLink>
+          <NavLink href="#trailer">Trailer</NavLink>
+          <NavLink href="#contact">Contact Us</NavLink>
         </NavLinks>
       </Nav>
 
-      {/* Section 1 — Hero */}
+      {/* Section 1 — Hero (no wave, no swirl) */}
       <HeroSection>
+        <HeroImage src="Assets/ACKeyArt1.jpg" alt="" />
         <HeroGradient />
         <HeroLogo src="Assets/ACLogo2.png" alt="Act Casual" />
         <HeroTextBlock>
@@ -413,68 +541,72 @@ export const MainPage = () => {
             and <strong>DO NOT GOOF OFF AT ALL.</strong>
           </HeroDescription>
         </HeroTextBlock>
-        <WaveBottom color={PURPLE} variant={1} />
       </HeroSection>
 
-      {/* Section 2 — The Setup */}
-      <SetupSection id="about">
-        <SwirlOverlay src="Assets/ACSwirl.svg" alt="" />
-        <SectionContent>
-          <SectionHeading>The Setup</SectionHeading>
-          <SetupGrid>
-            <SetupGifWrapper>
-              <SetupGifImg src="Assets/ACChoppingGif1.gif" alt="Alien chef chopping ingredients" />
-            </SetupGifWrapper>
-            <SetupText>
-              <p>
-                Mischievous aliens are trying to blend in as humans on earth, even as their constant
-                fighting threatens to get them in trouble with the locals!
-              </p>
-              <p>
-                Be the last alien standing in this chaotic 8-player party brawler! Just remember to
-                still <strong>"act casual"</strong> in front of the humans by performing the tasks
-                that match your disguises.
-              </p>
-            </SetupText>
-          </SetupGrid>
-        </SectionContent>
-        <WaveBottom color={BLUE} variant={2} />
-      </SetupSection>
+      {/*
+        GooWrapper starts 88px above its natural position (margin-top: -88px),
+        so WaveIntro visually overlaps the bottom of HeroSection.
+        GooSwirl covers everything from the intro wave through all three sections.
+      */}
+      <GooWrapper>
+        <GooSwirl src="Assets/ACSwirl.svg" alt="" />
 
-      {/* Section 3 — Gameplay Teaser */}
-      <TeaserSection id="teaser">
-        <SwirlOverlay src="Assets/ACSwirl.svg" alt="" />
-        <SectionContent style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <SectionHeading>
-            <HideOnMobile>Gameplay Teaser</HideOnMobile>
-            <ShowOnMobile>Teaser</ShowOnMobile>
-          </SectionHeading>
-          <VideoWrapper>
-            <VideoIframe
-              src="https://www.youtube.com/embed/uwSuaSkr1pE?si=Vw68bbVzNNL1pDro"
-              title="Act Casual gameplay teaser"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          </VideoWrapper>
-        </SectionContent>
-        <WaveBottom color={GREEN} variant={3} />
-      </TeaserSection>
+        {/* Intro wave: hero → purple */}
+        <WaveIntro color={PURPLE} />
 
-      {/* Section 4 — Contact Us */}
-      <ContactSection id="contact">
-        <SwirlOverlay src="Assets/ACSwirl.svg" alt="" />
-        <SectionContent>
-          <SectionHeading>Contact Us</SectionHeading>
-          <ContactBlock>
-            <ContactName>Marshall Demirjian</ContactName>
-            <ContactEmail href="mailto:marshall@actcasual.io">
-              marshall@actcasual.io
-            </ContactEmail>
-            <ContactRole>Game Director | Producer</ContactRole>
-          </ContactBlock>
-        </SectionContent>
-      </ContactSection>
+        {/* Section 2 — The Setup */}
+        <SetupSection id="about">
+          <SectionContent>
+            <SectionHeading>The Setup</SectionHeading>
+            <SetupGrid>
+              <SetupGifWrapper>
+                <SetupGifImg src="Assets/ACChoppingGif1.gif" alt="Alien chef chopping ingredients" />
+              </SetupGifWrapper>
+              <SetupText>
+                <p>
+                  <strong>Mischievous aliens</strong> are trying to blend in as humans on earth, even as their{' '}
+                  <strong>constant fighting</strong> threatens to get them in trouble with the locals!
+                </p>
+                <p>
+                  Be the <strong style={{ color: '#EFD259' }}>last alien standing</strong> in this chaotic 8-player party brawler! Just remember to
+                  still <strong>"act casual"</strong> in front of the humans by performing the{' '}
+                  <strong>tasks</strong> that match your disguises.
+                </p>
+              </SetupText>
+            </SetupGrid>
+          </SectionContent>
+          <WaveBottom color={BLUE} variant={2} />
+        </SetupSection>
+
+        {/* Section 3 — Gameplay Teaser */}
+        <TeaserSection id="trailer">
+          <SectionContent style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <SectionHeading>Gameplay Teaser</SectionHeading>
+            <VideoWrapper>
+              <VideoIframe
+                src="https://www.youtube.com/embed/uwSuaSkr1pE?si=Vw68bbVzNNL1pDro"
+                title="Act Casual gameplay teaser"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </VideoWrapper>
+          </SectionContent>
+          <WaveBottom color={GREEN} variant={3} />
+        </TeaserSection>
+
+        {/* Section 4 — Contact Us */}
+        <ContactSection id="contact">
+          <SectionContent>
+            <SectionHeading>Contact Us</SectionHeading>
+            <ContactBlock>
+              <ContactEmail href="mailto:marshall@actcasual.io">
+                marshall@actcasual.io
+              </ContactEmail>
+              <ContactRole>Marshall Demirjian - Game Director/Producer</ContactRole>
+            </ContactBlock>
+          </SectionContent>
+        </ContactSection>
+      </GooWrapper>
     </>
   )
 }
