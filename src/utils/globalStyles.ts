@@ -84,7 +84,7 @@ export const GlobalStyle = createGlobalStyle`
   *:after {
     box-sizing: border-box;
     //line-height: 1.5;
-    font-family: 'concertOne';
+    font-family: 'MadeTommySoft', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: auto;
   }
