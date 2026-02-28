@@ -11,6 +11,7 @@ const BP_XL = '1500px'
 const NAV_HEIGHT = '64px'
 const NAV_HEIGHT_MOBILE = '52px'
 const WAVE_H = 88
+const WAVE_H_MOBILE = Math.round(WAVE_H * 0.7)  // 30% shorter at mobile
 // 60% of wave height — how far GooWrapper overlaps into the hero
 const SWIRL_OVERLAP = Math.round(WAVE_H * 0.6)
 
@@ -24,6 +25,24 @@ const WAVE_PATHS = {
   3: 'M0,58 C80,28 220,82 400,44 C580,6 720,72 880,46 C1040,20 1200,78 1340,42 C1400,24 1430,62 1440,52 L1440,88 L0,88 Z',
 }
 
+// Wider-wavelength paths (2 arcs vs ~5) for mobile — less bumpy when horizontally compressed
+const MOBILE_WAVE_PATHS = {
+  1: 'M0,52 C240,12 480,80 720,44 C960,10 1200,78 1440,46 L1440,88 L0,88 Z',
+  2: 'M0,44 C240,82 480,12 720,52 C960,84 1200,14 1440,54 L1440,88 L0,88 Z',
+  3: 'M0,48 C240,18 480,82 720,44 C960,12 1200,76 1440,48 L1440,88 L0,88 Z',
+}
+
+const WAVE_RESPONSIVE_STYLE = `
+  .wv-svg { height: ${WAVE_H}px }
+  .wv-d { display: block }
+  .wv-m { display: none }
+  @media (max-width: 768px) {
+    .wv-svg { height: ${WAVE_H_MOBILE}px }
+    .wv-d { display: none }
+    .wv-m { display: block }
+  }
+`
+
 /*
  * WaveIntro — in-flow SVG placed as the first child of GooWrapper.
  * GooWrapper has margin-top: -WAVE_H, so this SVG visually overlaps the
@@ -36,9 +55,12 @@ const WaveIntro = ({ color }: { color: string }) => (
     viewBox={`0 0 1440 ${WAVE_H}`}
     preserveAspectRatio="none"
     aria-hidden="true"
-    style={{ display: 'block', width: '100%', height: `${WAVE_H}px` }}
+    className="wv-svg"
+    style={{ display: 'block', width: '100%' }}
   >
-    <path d={WAVE_PATHS[1]} fill={color} />
+    <style>{WAVE_RESPONSIVE_STYLE}</style>
+    <path className="wv-d" d={WAVE_PATHS[1]} fill={color} />
+    <path className="wv-m" d={MOBILE_WAVE_PATHS[1]} fill={color} />
   </svg>
 )
 
@@ -51,17 +73,19 @@ const WaveBottom = ({ color, variant = 1 }: { color: string; variant?: 1 | 2 | 3
     viewBox={`0 0 1440 ${WAVE_H}`}
     preserveAspectRatio="none"
     aria-hidden="true"
+    className="wv-svg"
     style={{
       position: 'absolute',
       bottom: 0,
       left: 0,
       width: '100%',
-      height: `${WAVE_H}px`,
       display: 'block',
       zIndex: 1,
     }}
   >
-    <path d={WAVE_PATHS[variant]} fill={color} />
+    <style>{WAVE_RESPONSIVE_STYLE}</style>
+    <path className="wv-d" d={WAVE_PATHS[variant]} fill={color} />
+    <path className="wv-m" d={MOBILE_WAVE_PATHS[variant]} fill={color} />
   </svg>
 )
 
@@ -113,6 +137,7 @@ const NavLink = styled.a`
   color: ${TEXT};
   font-family: 'Tilt Warp', sans-serif;
   font-size: 15px;
+  font-weight: 400;
   text-decoration: none;
   opacity: 0.9;
 
@@ -135,13 +160,13 @@ const HeroSection = styled.section`
   padding-bottom: 104px;
 
   @media (max-width: ${BP_MD}) {
-    padding-bottom: 96px;
+    padding-bottom: 80px;
     height: 700px;
   }
 
   @media (max-width: ${BP_SM}) {
-    padding-bottom: 84px;
-    height: 600px;
+    padding-bottom: 64px;
+    height: 590px;
   }
 `
 
@@ -177,8 +202,8 @@ const HeroImage = styled.img`
 
   @media (max-width: ${BP_SM}) {
     transform: scale(1.1);
-    object-position: 50% 40%;
-    transform-origin: 50% 40%;
+    object-position: 50% 48%;
+    transform-origin: 50% 48%;
   }
 `
 
@@ -187,6 +212,10 @@ const HeroGradient = styled.div`
   inset: 0;
   background: linear-gradient(to bottom, transparent 60%, rgba(0, 0, 0, 0.7) 100%);
   pointer-events: none;
+
+  @media (max-width: ${BP_MD}) {
+    background: linear-gradient(to bottom, transparent 54%, rgba(0, 0, 0, 0.7) 100%);
+  }
 `
 
 const HeroLogo = styled.img`
@@ -210,8 +239,8 @@ const HeroLogo = styled.img`
   }
 
   @media (max-width: ${BP_SM}) {
-    height: 220px;
-    top: 54px;
+    height: 210px;
+    top: 52px;
   }
 `
 
@@ -263,8 +292,8 @@ const HeroDescription = styled.p`
   }
 
   @media (max-width: ${BP_SM}) {
-    font-size: 20px;
-    line-height: 1.4;
+    font-size: 19px;
+    line-height: 1.35;
   }
 `
 
@@ -288,6 +317,10 @@ const GooWrapper = styled.div`
   position: relative;
   isolation: isolate;
   margin-top: -${WAVE_H}px;
+
+  @media (max-width: ${BP_MD}) {
+    margin-top: -${WAVE_H_MOBILE}px;
+  }
 `
 
 /*
@@ -325,14 +358,20 @@ const SectionHeading = styled.h2`
   font-size: 40px;
   color: ${TEXT};
   text-align: center;
+  font-weight: 400;
   margin-bottom: 48px;
   scroll-margin-top: ${NAV_HEIGHT};
 
   @media (max-width: ${BP_MD}) {
-    font-size: 30px;
-    margin-bottom: 32px;
+    font-size: 34px;
+    margin-bottom: 38px;
     scroll-margin-top: ${NAV_HEIGHT_MOBILE};
     line-height: 1.2;
+  }
+
+  @media (max-width: ${BP_SM}) {
+    font-size: 30px;
+    margin-bottom: 32px;
   }
 `
 
@@ -348,7 +387,7 @@ const SetupSection = styled.section`
   scroll-margin-top: ${NAV_HEIGHT};
 
   @media (max-width: ${BP_MD}) {
-    padding: 45px 28px 130px;
+    padding: 45px 28px 120px;
     scroll-margin-top: ${NAV_HEIGHT_MOBILE};
   }
 `
@@ -384,11 +423,14 @@ const SetupGifWrapper = styled.div`
   }
 
   @media (max-width: ${BP_MD}) {
-    width: 100%;
-    max-width: 340px;
-    height: auto;
+    max-width: 380px;
     aspect-ratio: 1.5;
     margin-top: 0px;
+  }
+
+  @media (max-width: ${BP_SM}) {
+    max-width: 340px;
+    aspect-ratio: 1.5;
   }
 `
 
@@ -421,8 +463,14 @@ const SetupText = styled.div`
   }
 
   @media (max-width: ${BP_MD}) {
-    font-size: 20px;
+    font-size: 22px;
     line-height: 1.45;
+    max-width: 560px;
+  }
+
+  @media (max-width: ${BP_SM}) {
+    font-size: 19px;
+    line-height: 1.4;
     max-width: 560px;
   }
 `
@@ -442,7 +490,7 @@ const TeaserSection = styled.section`
   scroll-margin-top: ${NAV_HEIGHT};
 
   @media (max-width: ${BP_MD}) {
-    padding: 50px 28px 120px;
+    padding: 40px 28px 126px;
     scroll-margin-top: ${NAV_HEIGHT_MOBILE};
   }
 `
@@ -477,7 +525,7 @@ const ContactSection = styled.section`
   scroll-margin-top: ${NAV_HEIGHT};
 
   @media (max-width: ${BP_MD}) {
-    padding: 60px 28px 120px;
+    padding: 50px 28px 120px;
     scroll-margin-top: ${NAV_HEIGHT_MOBILE};
   }
 `
@@ -500,8 +548,8 @@ const ContactEmail = styled.a`
     text-decoration: underline;
   }
 
-  @media (max-width: ${BP_MD}) {
-    font-size: 20px;
+  @media (max-width: ${BP_SM}) {
+    font-size: 23px;
   }
 `
 
@@ -510,6 +558,10 @@ const ContactRole = styled.p`
   font-weight: 500;
   font-size: 16px;
   opacity: 0.85;
+
+  @media (max-width: ${BP_SM}) {
+    font-size: 14px;
+  }
 `
 
 /* -------------------------------------------------------------------------- */

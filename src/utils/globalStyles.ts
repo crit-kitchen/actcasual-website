@@ -98,7 +98,13 @@ export const GlobalStyle = createGlobalStyle`
     isolation: isolate;
   }
 
-  html, body, #root {
+  html {
+    height: 100%;
+    background: linear-gradient(to bottom, #AE9C6C 30%, #9ad357 60%);
+    background-attachment: fixed;
+  }
+
+  body, #root {
     height: 100%;
   }
 `
