@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import { useEffect, useRef, useState } from 'react'
+import styled, { css, keyframes } from 'styled-components'
 
 const PURPLE = '#B980E5'
 const BLUE = '#67BDDB'
@@ -14,6 +15,10 @@ const WAVE_H = 88
 const WAVE_H_MOBILE = Math.round(WAVE_H * 0.7)  // 30% shorter at mobile
 // 60% of wave height — how far GooWrapper overlaps into the hero
 const SWIRL_OVERLAP = Math.round(WAVE_H * 0.6)
+const SECTION_EASE = 'cubic-bezier(0.33, 1, 0.68, 1)'
+const REVEAL_HEADING_DELAY = 0.1  // seconds
+const REVEAL_CONTENT_DELAY = 0.5  // seconds
+const REVEAL_LOAD_OFFSET   = 1.1  // extra delay when element is visible at page load
 
 /* -------------------------------------------------------------------------- */
 /*  Wave shapes                                                                */
@@ -147,6 +152,32 @@ const NavLink = styled.a`
 `
 
 /* -------------------------------------------------------------------------- */
+/*  Entrance animations                                                        */
+/* -------------------------------------------------------------------------- */
+
+// Desktop: no pre-existing transform, so just scale + opacity
+const heroLogoIn = keyframes`
+  from { transform: scale(0.3); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+`
+
+// Mobile: must include translateX(-50%) in every frame to preserve centering
+const heroLogoInMobile = keyframes`
+  from { transform: translateX(-50%) scale(0.3); opacity: 0; }
+  to   { transform: translateX(-50%) scale(1);    opacity: 1; }
+`
+
+const heroTextIn = keyframes`
+  from { transform: translateY(14px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+`
+
+const sectionFadeUp = keyframes`
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+`
+
+/* -------------------------------------------------------------------------- */
 /*  Section 1 — Hero                                                           */
 /* -------------------------------------------------------------------------- */
 
@@ -224,6 +255,7 @@ const HeroLogo = styled.img`
   left: 16px;
   height: 360px;
   width: auto;
+  animation: ${heroLogoIn} 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 
   @media (max-width: ${BP_LG}) {
     top: 72px;
@@ -236,6 +268,7 @@ const HeroLogo = styled.img`
     transform: translateX(-50%);
     height: 260px;
     top: 56px;
+    animation-name: ${heroLogoInMobile};
   }
 
   @media (max-width: ${BP_SM}) {
@@ -248,6 +281,7 @@ const HeroTextBlock = styled.div`
   position: relative;
   z-index: 1;
   padding: 0 48px;
+  animation: ${heroTextIn} 0.8s cubic-bezier(0.33, 1, 0.68, 1) 0.8s both;
 
   @media (max-width:${BP_MD}) {
     text-align: center;
@@ -501,6 +535,7 @@ const VideoWrapper = styled.div`
   width: 100%;
   max-width: 700px;
   aspect-ratio: 16 / 9;
+  margin: 0 auto;
 `
 
 const VideoIframe = styled.iframe`
@@ -564,11 +599,45 @@ const ContactRole = styled.p`
   }
 `
 
+const RevealDiv = styled.div<{ $visible: boolean; $delay?: string }>`
+  opacity: 0;
+  ${({ $visible, $delay = '0s' }) => $visible && css`
+    animation: ${sectionFadeUp} 0.7s ${SECTION_EASE} ${$delay} both;
+  `}
+`
+
 /* -------------------------------------------------------------------------- */
 /*  Component                                                                  */
 /* -------------------------------------------------------------------------- */
 
+function useScrollReveal(threshold = 0.2) {
+  const ref = useRef<HTMLElement>(null)
+  const [visible, setVisible] = useState(false)
+  const [loadOffset, setLoadOffset] = useState(0)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setLoadOffset(window.scrollY < 50 ? REVEAL_LOAD_OFFSET : 0)
+          setVisible(true)
+          obs.disconnect()
+        }
+      },
+      { threshold }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [threshold])
+  return [ref, visible, loadOffset] as const
+}
+
 export const MainPage = () => {
+  const [setupRef, setupVisible, setupOffset] = useScrollReveal()
+  const [teaserRef, teaserVisible, teaserOffset] = useScrollReveal()
+  const [contactRef, contactVisible, contactOffset] = useScrollReveal()
+
   return (
     <>
       {/* Nav */}
@@ -607,55 +676,67 @@ export const MainPage = () => {
         <WaveIntro color={PURPLE} />
 
         {/* Section 2 — The Setup */}
-        <SetupSection id="about">
+        <SetupSection id="about" ref={setupRef}>
           <SectionContent>
-            <SectionHeading>The Setup</SectionHeading>
-            <SetupGrid>
-              <SetupGifWrapper>
-                <SetupGifImg src="Assets/ACChoppingGif1.gif" alt="Alien chef chopping ingredients" />
-              </SetupGifWrapper>
-              <SetupText>
-                <p>
-                  <strong>Mischievous aliens</strong> are trying to blend in as humans on earth, even as their{' '}
-                  <strong>constant fighting</strong> threatens to get them in trouble with the locals!
-                </p>
-                <p>
-                  Be the <strong style={{ color: '#EFD259' }}>last alien standing</strong> in this chaotic 8-player party brawler! Just remember to
-                  still <strong>"act casual"</strong> in front of the humans by performing the{' '}
-                  <strong>tasks</strong> that match your disguises.
-                </p>
-              </SetupText>
-            </SetupGrid>
+            <RevealDiv $visible={setupVisible} $delay={`${REVEAL_HEADING_DELAY + setupOffset}s`}>
+              <SectionHeading>The Setup</SectionHeading>
+            </RevealDiv>
+            <RevealDiv $visible={setupVisible} $delay={`${REVEAL_CONTENT_DELAY + setupOffset}s`}>
+              <SetupGrid>
+                <SetupGifWrapper>
+                  <SetupGifImg src="Assets/ACChoppingGif1.gif" alt="Alien chef chopping ingredients" />
+                </SetupGifWrapper>
+                <SetupText>
+                  <p>
+                    <strong>Mischievous aliens</strong> are trying to blend in as humans on earth, even as their{' '}
+                    <strong>constant fighting</strong> threatens to get them in trouble with the locals!
+                  </p>
+                  <p>
+                    Be the <strong style={{ color: '#EFD259' }}>last alien standing</strong> in this chaotic 8-player party brawler! Just remember to
+                    still <strong>"act casual"</strong> in front of the humans by performing the{' '}
+                    <strong>tasks</strong> that match your disguises.
+                  </p>
+                </SetupText>
+              </SetupGrid>
+            </RevealDiv>
           </SectionContent>
           <WaveBottom color={BLUE} variant={2} />
         </SetupSection>
 
         {/* Section 3 — Gameplay Teaser */}
-        <TeaserSection id="trailer">
+        <TeaserSection id="trailer" ref={teaserRef}>
           <SectionContent style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <SectionHeading>Gameplay Teaser</SectionHeading>
-            <VideoWrapper>
-              <VideoIframe
-                src="https://www.youtube.com/embed/uwSuaSkr1pE?si=Vw68bbVzNNL1pDro"
-                title="Act Casual gameplay teaser"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </VideoWrapper>
+            <RevealDiv $visible={teaserVisible} $delay={`${REVEAL_HEADING_DELAY + teaserOffset}s`} style={{ width: '100%' }}>
+              <SectionHeading>Gameplay Teaser</SectionHeading>
+            </RevealDiv>
+            <RevealDiv $visible={teaserVisible} $delay={`${REVEAL_CONTENT_DELAY + teaserOffset}s`} style={{ width: '100%' }}>
+              <VideoWrapper>
+                <VideoIframe
+                  src="https://www.youtube.com/embed/uwSuaSkr1pE?si=Vw68bbVzNNL1pDro"
+                  title="Act Casual gameplay teaser"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                />
+              </VideoWrapper>
+            </RevealDiv>
           </SectionContent>
           <WaveBottom color={GREEN} variant={3} />
         </TeaserSection>
 
         {/* Section 4 — Contact Us */}
-        <ContactSection id="contact">
+        <ContactSection id="contact" ref={contactRef}>
           <SectionContent>
-            <SectionHeading>Contact Us</SectionHeading>
-            <ContactBlock>
-              <ContactEmail href="mailto:marshall@actcasual.io">
-                marshall@actcasual.io
-              </ContactEmail>
-              <ContactRole>Marshall Demirjian - Game Director/Producer</ContactRole>
-            </ContactBlock>
+            <RevealDiv $visible={contactVisible} $delay={`${REVEAL_HEADING_DELAY + contactOffset}s`}>
+              <SectionHeading>Contact Us</SectionHeading>
+            </RevealDiv>
+            <RevealDiv $visible={contactVisible} $delay={`${REVEAL_CONTENT_DELAY + contactOffset}s`}>
+              <ContactBlock>
+                <ContactEmail href="mailto:marshall@actcasual.io">
+                  marshall@actcasual.io
+                </ContactEmail>
+                <ContactRole>Marshall Demirjian - Game Director/Producer</ContactRole>
+              </ContactBlock>
+            </RevealDiv>
           </SectionContent>
         </ContactSection>
       </GooWrapper>
