@@ -23,10 +23,21 @@
   src: local("mops"), url(./mops.ttf) format("truetype");
 }
 
-
 @font-face {
   font-family: "concertOne";
   src: local("concertOne"), url(./concertOne.ttf) format("truetype");
 }
-/* WARNING For some fucking reason i cant get these to load to the relative path of the project,
-so they must go at critkitchen.com/dist/fonts regardless of what project this is*/
+
+@font-face {
+  font-family: 'MadeTommySoft';
+  src: url('./MADETommySoftMedium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MadeTommySoft';
+  src: url('./MADETommySoftBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
