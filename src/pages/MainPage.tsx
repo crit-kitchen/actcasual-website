@@ -81,7 +81,7 @@ const WaveBottom = ({ color, variant = 1 }: { color: string; variant?: 1 | 2 | 3
     className="wv-svg"
     style={{
       position: 'absolute',
-      bottom: 0,
+      bottom: -1,
       left: 0,
       width: '100%',
       display: 'block',
@@ -159,12 +159,6 @@ const NavLink = styled.a`
 const heroLogoIn = keyframes`
   from { transform: scale(0.3); opacity: 0; }
   to   { transform: scale(1);    opacity: 1; }
-`
-
-// Mobile: must include translateX(-50%) in every frame to preserve centering
-const heroLogoInMobile = keyframes`
-  from { transform: translateX(-50%) scale(0.3); opacity: 0; }
-  to   { transform: translateX(-50%) scale(1);    opacity: 1; }
 `
 
 const heroTextIn = keyframes`
@@ -249,31 +243,44 @@ const HeroGradient = styled.div`
   }
 `
 
-const HeroLogo = styled.img`
+const HeroLogoWrapper = styled.div`
   position: absolute;
   top: 72px;
   left: 16px;
+
+  @media (max-width: ${BP_LG}) {
+    top: 72px;
+    left: 12px;
+  }
+
+  @media (max-width: ${BP_MD}) {
+    left: 0;
+    right: 0;
+    top: 56px;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: ${BP_SM}) {
+    top: 52px;
+  }
+`
+
+const HeroLogo = styled.img`
   height: 360px;
   width: auto;
   animation: ${heroLogoIn} 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 
   @media (max-width: ${BP_LG}) {
-    top: 72px;
-    left: 12px;
     height: 300px;
   }
 
   @media (max-width: ${BP_MD}) {
-    left: 50%;
-    transform: translateX(-50%);
     height: 260px;
-    top: 56px;
-    animation-name: ${heroLogoInMobile};
   }
 
   @media (max-width: ${BP_SM}) {
     height: 210px;
-    top: 52px;
   }
 `
 
@@ -654,7 +661,7 @@ export const MainPage = () => {
       <HeroSection>
         <HeroImage src="Assets/ACKeyArt1.jpg" alt="" />
         <HeroGradient />
-        <HeroLogo src="Assets/ACLogo2.png" alt="Act Casual" />
+        <HeroLogoWrapper><HeroLogo src="Assets/ACLogo2.png" alt="Act Casual" /></HeroLogoWrapper>
         <HeroTextBlock>
           <ComingSoon>Coming Soon</ComingSoon>
           <HeroDescription>
