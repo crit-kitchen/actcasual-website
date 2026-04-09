@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/iambit-webdemo",
+            "destination": "https://actcasual-publisher-local.vercel.app"
+        },
+        {
+            "source": "/iambit-webdemo/:path*",
+            "destination": "https://actcasual-publisher-local.vercel.app/:path*"
+        }
+    ]
+}
